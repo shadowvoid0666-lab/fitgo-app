@@ -20,7 +20,7 @@
     <header class="p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-900/80 backdrop-blur z-10">
       <div class="flex items-center gap-2">
         <span class="text-green-500 font-black text-xl flex items-center gap-1">
-          <svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin=" His" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           FIT GO
         </span>
       </div>
@@ -114,12 +114,12 @@
         </div>
       </section>
 
-      <!-- PLANS VIEW (FULLY INTERACTIVE NOW) -->
+      <!-- PLANS VIEW WITH WORKOUT SUGGESTIONS -->
       <section id="view-plans" class="space-y-4">
         <div>
           <div class="text-xs font-semibold text-green-500 uppercase tracking-wider">Personalized Guidance</div>
           <h2 class="text-xl font-bold">Choose your fitness direction</h2>
-          <p class="text-xs text-zinc-400">Select one goal and enter your current and target weight.</p>
+          <p class="text-xs text-zinc-400">Select one goal to generate target calculations & recommended workouts.</p>
         </div>
 
         <!-- Goal Selection Cards -->
@@ -156,8 +156,21 @@
               <input type="number" id="plan-tar-w" placeholder="65" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-green-500">
             </div>
           </div>
-          <button onclick="savePlan()" class="w-full bg-green-500 text-zinc-950 font-bold py-2.5 rounded-xl hover:bg-green-400 transition text-sm">Save & Calculate Direction</button>
+          <button onclick="savePlan()" class="w-full bg-green-500 text-zinc-950 font-bold py-2.5 rounded-xl hover:bg-green-400 transition text-sm">Save & Generate Routine</button>
+          
           <div id="plan-summary" class="hidden p-3 bg-zinc-900 rounded-xl text-xs text-zinc-300 space-y-1"></div>
+
+          <!-- Dynamic Workout Suggestions Block -->
+          <div id="workout-suggestions" class="hidden space-y-2 pt-2 border-t border-zinc-800">
+            <div class="text-xs font-bold text-green-400 uppercase tracking-wider flex items-center gap-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Recommended Workout Strategy
+            </div>
+            <div id="workout-content" class="text-xs text-zinc-300 space-y-2 bg-zinc-900/80 p-3 rounded-xl border border-zinc-800">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -203,6 +216,33 @@
 
   <script>
     let activeGoal = '';
+
+    const workoutDatabase = {
+      'loss': `
+        <div class="font-bold text-amber-400 mb-1">🔥 Fat Loss Routine (3-4 Days/Week)</div>
+        <ul class="list-disc list-inside space-y-1 text-zinc-300">
+          <li><strong>Strength Circuit:</strong> Goblet Squats, Push-ups, Dumbbell Rows (3 sets x 12 reps)</li>
+          <li><strong>Cardio Intervals:</strong> 20 min Brisk Walking or Incline Treadmill / Cycling</li>
+          <li><strong>Focus:</strong> Keep rest intervals under 60 seconds to maximize calorie expenditure.</li>
+        </ul>
+      `,
+      'gain': `
+        <div class="font-bold text-blue-400 mb-1">💪 Muscle & Hypertrophy Routine (4 Days/Week)</div>
+        <ul class="list-disc list-inside space-y-1 text-zinc-300">
+          <li><strong>Compound Lifts:</strong> Barbell/Dumbbell Squats, Bench Press, Deadlifts (4 sets x 8-10 reps)</li>
+          <li><strong>Accessory Work:</strong> Overhead Press, Lat Pulldowns, Bicep Curls (3 sets x 12 reps)</li>
+          <li><strong>Focus:</strong> Progressive overload with 90-120 second rest between heavy sets.</li>
+        </ul>
+      `,
+      'maintain': `
+        <div class="font-bold text-green-400 mb-1">⚡ Balanced Maintenance Routine (3 Days/Week)</div>
+        <ul class="list-disc list-inside space-y-1 text-zinc-300">
+          <li><strong>Full Body Strength:</strong> Bodyweight Dips, Pull-ups or Inverted Rows, Lunges (3 sets x 10-12 reps)</li>
+          <li><strong>Active Recovery:</strong> 30 min Zone-2 Light Jogging, Swimming, or Yoga</li>
+          <li><strong>Focus:</strong> Maintain cardiovascular foundation and structural joint stability.</li>
+        </ul>
+      `
+    };
 
     function switchTab(tabId) {
       const views = ['home', 'profile', 'bmi', 'check', 'plans', 'progress'];
@@ -267,6 +307,10 @@
         'maintain': 'Maintenance Direction'
       };
       document.getElementById('selected-goal-title').innerText = titleMap[type];
+
+      // Insert corresponding workout recommendations
+      document.getElementById('workout-content').innerHTML = workoutDatabase[type];
+      document.getElementById('workout-suggestions').classList.remove('hidden');
     }
 
     function savePlan() {
@@ -282,11 +326,11 @@
       const diff = (tar - cur).toFixed(1);
       let text = '';
       if (diff < 0) {
-        text = `Target: Net weight reduction of ${Math.abs(diff)} kg. Focus on a 300-500 kcal deficit.`;
+        text = `Target: Net weight reduction of ${Math.abs(diff)} kg. Focus on a 300-500 kcal deficit alongside your fat loss routine below.`;
       } else if (diff > 0) {
-        text = `Target: Net gain of ${diff} kg. Focus on progressive resistance and caloric surplus.`;
+        text = `Target: Net gain of ${diff} kg. Focus on progressive resistance and caloric surplus alongside your muscle building routine below.`;
       } else {
-        text = `Target: Maintain baseline weight. Keep energy intake equal to output.`;
+        text = `Target: Maintain baseline weight. Keep energy intake equal to output while following your maintenance routine below.`;
       }
 
       summary.innerText = text;
