@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIT GO Mobile App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { green: '#80E51A', darkGreen: '#1F7A50', darkBg: '#0D0E0D', darkCard: '#151715', lightBg: '#F2F1EC', lightCard: '#FFFFFF' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-brand-darkBg text-white min-h-screen flex justify-center items-center p-0 sm:p-4">
+
+  <!-- Mobile Frame Container -->
+  <div class="w-full max-w-md h-[100vh] sm:h-[844px] bg-brand-darkBg dark:bg-brand-darkBg bg-brand-lightBg text-slate-900 dark:text-white sm:rounded-[40px] shadow-2xl flex flex-col overflow-hidden relative border border-zinc-800">
+    
+    <!-- SPLASH / THEME SELECTOR SCREEN -->
+    <div id="splashScreen" class="absolute inset-0 z-50 bg-[#141514] flex flex-col justify-between p-8 transition-opacity duration-500">
+      <div class="flex-1 flex flex-col items-center justify-center text-center">
+        <!-- FitGo Runner Logo -->
+        <div class="w-24 h-24 mb-6">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M 25 65 L 45 45 L 60 55 L 80 35" fill="none" stroke="#80E51A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+            <polygon points="75,25 90,35 75,45" fill="#80E51A"/>
+            <path d="M 35 75 L 50 60 L 65 70" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="65" cy="25" r="8" fill="#80E51A"/>
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold tracking-tight text-white mb-2">FitGo</h1>
+        <p class="text-zinc-400 text-sm">Your health & fitness direction</p>
+      </div>
+
+      <div class="space-y-3 w-full">
+        <button onclick="selectInitialTheme('dark')" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-full hover:opacity-90 transition">
+          Use Dark Mode
+        </button>
+        <button onclick="selectInitialTheme('light')" class="w-full py-3.5 bg-zinc-800 text-white font-semibold rounded-full border border-zinc-700 hover:bg-zinc-700 transition">
+          Switch to Light Mode
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN APP CONTENT -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      
+      <!-- Top App Header -->
+      <header class="px-5 pt-5 pb-3 flex items-center justify-between bg-[#0D0E0D] dark:bg-[#0D0E0D] bg-white border-b border-zinc-800/50">
+        <div class="flex items-center gap-2">
+          <!-- Small Logo -->
+          <svg class="w-6 h-6 text-brand-green" viewBox="0 0 100 100">
+            <path d="M 25 65 L 45 45 L 60 55 L 80 35" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round"/>
+            <circle cx="65" cy="25" r="10" fill="currentColor"/>
+          </svg>
+          <span class="font-black tracking-wider text-lg text-white dark:text-white text-zinc-900">FIT <span class="text-brand-green">GO</span></span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Action Status Badge -->
+          <div id="statusBadge" class="flex items-center gap-1.5 px-3 py-1 bg-zinc-900 rounded-full border border-zinc-800 text-xs text-zinc-300">
+            <span id="statusDot" class="w-2 h-2 rounded-full bg-orange-500"></span>
+            <span id="statusText">Action required</span>
+          </div>
+
+          <!-- User Avatar Badge -->
+          <button onclick="switchTab('profile')" id="avatarBadge" class="w-8 h-8 rounded-full bg-amber-200 text-amber-900 font-bold text-xs flex items-center justify-center">
+            NA
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable Main View Area -->
+      <main class="flex-1 overflow-y-auto hide-scrollbar">
+        
+        <!-- HOME TAB -->
+        <section id="tab-home" class="tab-content">
+          <div class="bg-[#0D0E0D] px-6 pt-4 pb-8 rounded-b-[32px] text-white">
+            <p class="text-xs uppercase tracking-wider text-brand-green font-semibold mb-1" id="greetingUser">WELCOME, N/A</p>
+            <h2 class="text-2xl font-bold leading-tight mb-2">Your healthier direction starts here.</h2>
+            <p class="text-xs text-zinc-400">A guided fitness plan that adapts to your body, goal, and safety check—without quick fixes.</p>
+          </div>
+
+          <div class="p-5 space-y-4">
+            <!-- Alert Banner -->
+            <div id="homeAlertBanner" onclick="switchTab('check')" class="bg-amber-100/80 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 p-4 rounded-2xl flex items-center justify-between cursor-pointer">
+              <div>
+                <h4 class="text-sm font-semibold text-amber-900 dark:text-amber-200">Complete your health condition check</h4>
+                <p class="text-xs text-amber-700 dark:text-amber-400 mt-0.5">This safety stop is required before FITGO can show recommendations.</p>
+              </div>
+              <span class="text-amber-900 dark:text-amber-200 text-lg">➔</span>
+            </div>
+
+            <!-- Checklist Cards -->
+            <div class="bg-white dark:bg-brand-darkCard p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800/60 flex items-center justify-between" onclick="switchTab('profile')">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">👤</div>
+                <div>
+                  <h4 class="text-sm font-semibold">Profile</h4>
+                  <p class="text-xs text-zinc-500">Set your details</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider" id="homeProfileBadge">PENDING</span>
+            </div>
+
+            <div class="bg-white dark:bg-brand-darkCard p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800/60 flex items-center justify-between" onclick="switchTab('bmi')">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">📊</div>
+                <div>
+                  <h4 class="text-sm font-semibold">BMI Calculator</h4>
+                  <p class="text-xs text-zinc-500">Calculate body mass index</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider" id="homeBmiBadge">N/A</span>
+            </div>
+
+            <div class="bg-white dark:bg-brand-darkCard p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800/60 flex items-center justify-between" onclick="switchTab('check')">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">🛡️</div>
+                <div>
+                  <h4 class="text-sm font-semibold">Condition Check</h4>
+                  <p class="text-xs text-zinc-500">Complete before planning</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-bold text-amber-500 uppercase tracking-wider" id="homeCheckBadge">REQUIRED</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROFILE TAB -->
+        <section id="tab-profile" class="tab-content hidden">
+          <div class="bg-[#0D0E0D] px-6 pt-4 pb-8 rounded-b-[32px] text-white">
+            <p class="text-xs uppercase tracking-wider text-brand-green font-semibold mb-1">ABOUT YOU</p>
+            <h2 class="text-2xl font-bold mb-2">User profile</h2>
+            <p class="text-xs text-zinc-400">These details help FITGO calculate general indicators and personalize your plan.</p>
+          </div>
+
+          <div class="p-5">
+            <div class="bg-white dark:bg-brand-darkCard p-5 rounded-3xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+              <div>
+                <label class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">FULL NAME</label>
+                <input type="text" id="inputName" placeholder="N/A" value="N/A" class="w-full mt-1 p-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm font-medium focus:outline-none" />
+              </div>
+
+              <div>
+                <label class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">SEX USED FOR GENERAL GUIDANCE</label>
+                <select id="inputSex" class="w-full mt-1 p-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm font-medium focus:outline-none">
+                  <option value="N/A" selected>N/A</option>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                </select>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">AGE</label>
+                  <input type="number" id="inputAge" placeholder="N/A" class="w-full mt-1 p-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm font-medium focus:outline-none" />
+                </div>
+                <div>
+                  <label class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">HEIGHT (CM)</label>
+                  <input type="number" id="inputHeight" placeholder="N/A" class="w-full mt-1 p-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm font-medium focus:outline-none" />
+                </div>
+              </div>
+
+              <div>
+                <label class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">CURRENT WEIGHT (KG)</label>
+                <input type="number" step="0.1" id="inputWeight" placeholder="N/A" class="w-full mt-1 p-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm font-medium focus:outline-none" />
+              </div>
+
+              <button onclick="saveProfile()" class="w-full py-3.5 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-full hover:opacity-90 transition mt-2">
+                ✓ Save profile
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- BMI TAB -->
+        <section id="tab-bmi" class="tab-content hidden">
+          <div class="bg-[#0D0E0D] px-6 pt-4 pb-8 rounded-b-[32px] text-white">
+            <p class="text-xs uppercase tracking-wider text-brand-green font-semibold mb-1">HEALTH INDICATOR</p>
+            <h2 class="text-2xl font-bold mb-2">BMI calculator</h2>
+            <p class="text-xs text-zinc-400">BMI is a screening measure, not a diagnosis. It does not directly measure body fat.</p>
+          </div>
+
+          <div class="p-5 space-y-4">
+            <div class="bg-white dark:bg-brand-darkCard p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex justify-between gap-3">
+              <div class="flex-1">
+                <label class="text-[10px] uppercase font-bold text-zinc-400">HEIGHT (CM)</label>
+                <input type="number" id="bmiHeight" placeholder="N/A" oninput="updateBmiCalc()" class="w-full mt-1 p-2.5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm font-semibold" />
+              </div>
+              <div class="flex-1">
+                <label class="text-[10px] uppercase font-bold text-zinc-400">WEIGHT (KG)</label>
+                <input type="number" step="0.1" id="bmiWeight" placeholder="N/A" oninput="updateBmiCalc()" class="w-full mt-1 p-2.5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm font-semibold" />
+              </div>
+            </div>
+
+            <!-- BMI Result Hero Card -->
+            <div class="bg-black text-white p-6 rounded-3xl border border-zinc-800 space-y-4">
+              <p class="text-[10px] uppercase font-bold text-brand-green tracking-wider">YOUR RESULT</p>
+              <div class="flex items-baseline gap-2">
+                <span id="bmiVal" class="text-5xl font-black">N/A</span>
+                <span class="text-sm text-zinc-400" id="bmiUnit"></span>
+              </div>
+
+              <div class="inline-block px-3 py-1 bg-zinc-800 rounded-full text-xs font-semibold" id="bmiCategory">
+                Awaiting input
+              </div>
+
+              <!-- Spectrum Bar -->
+              <div class="pt-2">
+                <div class="h-3 rounded-full w-full bg-gradient-to-r from-blue-400 via-emerald-400 via-amber-400 to-red-500 relative">
+                  <div id="spectrumPointer" class="w-4 h-4 rounded-full bg-white border-2 border-black absolute -top-0.5 opacity-0 transition-all" style="left: 0%;"></div>
+                </div>
+                <div class="flex justify-between text-[10px] text-zinc-500 mt-2">
+                  <span>Under 18.5</span>
+                  <span>18.5–24.9</span>
+                  <span>25–29.9</span>
+                  <span>30+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHECK TAB -->
+        <section id="tab-check" class="tab-content hidden">
+          <div class="bg-[#0D0E0D] px-6 pt-4 pb-8 rounded-b-[32px] text-white">
+            <p class="text-xs uppercase tracking-wider text-brand-green font-semibold mb-1">REQUIRED SAFETY STEP</p>
+            <h2 class="text-2xl font-bold mb-2">Health condition check</h2>
+            <p class="text-xs text-zinc-400">Before showing a fitness plan, we need to know whether self-guided exercise may be inappropriate.</p>
+          </div>
+
+          <div class="p-5 space-y-4">
+            <div class="bg-white dark:bg-brand-darkCard p-5 rounded-3xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+              <h3 class="font-bold text-base">Do you have a diagnosed health condition, concerning symptoms, or a recent injury?</h3>
+              <p class="text-xs text-zinc-500 leading-relaxed">Examples include heart or lung disease, uncontrolled blood pressure, diabetes complications, chest pain, fainting, or musculoskeletal injury.</p>
+
+              <div class="space-y-3 pt-2">
+                <button onclick="setCondition(true)" id="btnCondYes" class="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 text-left hover:border-black dark:hover:border-white transition">
+                  <div class="font-bold text-sm">Yes, one or more</div>
+                  <div class="text-xs text-zinc-500">I may need medical guidance</div>
+                </button>
+
+                <button onclick="setCondition(false)" id="btnCondNo" class="w-full p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 text-left hover:border-black dark:hover:border-white transition">
+                  <div class="font-bold text-sm">No known concerns</div>
+                  <div class="text-xs text-zinc-500">I can proceed to planning</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Feedback Alert -->
+            <div id="condAlertYes" class="hidden p-4 bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800 rounded-2xl text-amber-900 dark:text-amber-200 text-xs">
+              <h5 class="font-bold mb-1">Please consult a qualified healthcare professional first.</h5>
+              <p>Because safety comes first, FITGO locks fitness recommendations until cleared by your doctor.</p>
+            </div>
+
+            <div id="condAlertNo" class="hidden p-4 bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 rounded-2xl text-emerald-900 dark:text-emerald-200 text-xs">
+              <h5 class="font-bold mb-1">✓ You can continue to the fitness planner.</h5>
+              <p>Your condition check is complete and logged.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- PLANS TAB -->
+        <section id="tab-plans" class="tab-content hidden">
+          <div class="bg-[#0D0E0D] px-6 pt-4 pb-8 rounded-b-[32px] text-white">
+            <p class="text-xs uppercase tracking-wider text-brand-green font-semibold mb-1">PERSONALIZED GUIDANCE</p>
+            <h2 class="text-2xl font-bold mb-2">Choose your fitness direction</h2>
+            <p class="text-xs text-zinc-400">Select one goal and enter your current and target weight.</p>
+          </div>
+
+          <div class="p-5">
+            <!-- Locked State Screen -->
+            <div id="plansLocked" class="bg-white dark:bg-brand-darkCard p-6 rounded-3xl border border-zinc-200 dark:border-zinc-800 text-center space-y-4">
+              <div class="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-600 flex items-center justify-center mx-auto text-xl">🛡️</div>
+              <h3 class="font-bold text-base">Complete the condition check first</h3>
+              <p class="text-xs text-zinc-500">FITGO only unlocks general recommendations after you confirm there are no known health concerns.</p>
+              <button onclick="switchTab('check')" class="w-full py-3 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-full text-xs">
+                Go to condition check
+              </button>
+            </div>
+
+            <!-- Unlocked Content -->
+            <div id="plansUnlocked" class="hidden space-y-4">
+              <div class="bg-white dark:bg-brand-darkCard p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-2">
+                <span class="text-[10px] font-bold text-amber-500 uppercase">FAT LOSS</span>
+                <h4 class="font-bold text-sm">Lose weight steadily</h4>
+                <p class="text-xs text-zinc-500">Build a moderate, sustainable energy deficit while protecting strength.</p>
+              </div>
+
+              <div class="bg-white dark:bg-brand-darkCard p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-2">
+                <span class="text-[10px] font-bold text-blue-500 uppercase">HEALTHY GAIN</span>
+                <h4 class="font-bold text-sm">Gain weight with strength</h4>
+                <p class="text-xs text-zinc-500">Increase energy gradually with nutrient-dense foods and resistance training.</p>
+              </div>
+
+              <div class="bg-white dark:bg-brand-darkCard p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-2">
+                <span class="text-[10px] font-bold text-brand-green uppercase">WEIGHT MAINTENANCE</span>
+                <h4 class="font-bold text-sm">Stay steady and capable</h4>
+                <p class="text-xs text-zinc-500">Keep routines flexible, repeatable, and focused on long-term markers.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROGRESS TAB -->
+        <section id="tab-progress" class="tab-content hidden">
+          <div class="bg-[#0D0E0D] px-6 pt-4 pb-8 rounded-b-[32px] text-white">
+            <p class="text-xs uppercase tracking-wider text-brand-green font-semibold mb-1">FITNESS PROGRESS</p>
+            <h2 class="text-2xl font-bold mb-2">Small steps, clearly tracked.</h2>
+            <p class="text-xs text-zinc-400">Log consistently and focus on direction over several weeks.</p>
+          </div>
+
+          <div class="p-5 space-y-4">
+            <!-- Trend Card -->
+            <div class="bg-white dark:bg-brand-darkCard p-5 rounded-3xl border border-zinc-200 dark:border-zinc-800 space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">WEIGHT TREND</span>
+                <span id="trendDiffBadge" class="px-2.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-500 rounded-full text-xs font-bold">N/A</span>
+              </div>
+              <h3 id="currentWeightDisplay" class="text-3xl font-black">N/A</h3>
+
+              <!-- Chart Container -->
+              <div class="h-36 w-full pt-2">
+                <canvas id="weightBarChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Log Entry Input -->
+            <div class="bg-white dark:bg-brand-darkCard p-5 rounded-3xl border border-zinc-200 dark:border-zinc-800 space-y-3">
+              <h4 class="font-bold text-sm">Log today's weight</h4>
+              <div>
+                <label class="text-[10px] uppercase font-bold text-zinc-400">WEIGHT (KG)</label>
+                <input type="number" step="0.1" id="newLogWeight" placeholder="e.g. 64.2" class="w-full mt-1 p-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm font-medium" />
+              </div>
+              <button onclick="addWeightLog()" class="w-full py-3 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-full text-xs">
+                Add entry
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Bottom Navigation Bar -->
+      <nav class="bg-white dark:bg-[#0D0E0D] border-t border-zinc-200 dark:border-zinc-800 px-3 py-2 flex justify-between items-center">
+        <button onclick="switchTab('home')" class="nav-btn flex-1 flex flex-col items-center py-1 text-zinc-400" id="nav-home">
+          <span class="text-base">🏠</span>
+          <span class="text-[10px] font-medium mt-0.5">Home</span>
+        </button>
+        <button onclick="switchTab('profile')" class="nav-btn flex-1 flex flex-col items-center py-1 text-zinc-400" id="nav-profile">
+          <span class="text-base">👤</span>
+          <span class="text-[10px] font-medium mt-0.5">Profile</span>
+        </button>
+        <button onclick="switchTab('bmi')" class="nav-btn flex-1 flex flex-col items-center py-1 text-zinc-400" id="nav-bmi">
+          <span class="text-base">📊</span>
+          <span class="text-[10px] font-medium mt-0.5">BMI</span>
+        </button>
+        <button onclick="switchTab('check')" class="nav-btn flex-1 flex flex-col items-center py-1 text-zinc-400" id="nav-check">
+          <span class="text-base">🛡️</span>
+          <span class="text-[10px] font-medium mt-0.5">Check</span>
+        </button>
+        <button onclick="switchTab('plans')" class="nav-btn flex-1 flex flex-col items-center py-1 text-zinc-400" id="nav-plans">
+          <span class="text-base">🎯</span>
+          <span class="text-[10px] font-medium mt-0.5">Plans</span>
+        </button>
+        <button onclick="switchTab('progress')" class="nav-btn flex-1 flex flex-col items-center py-1 text-zinc-400" id="nav-progress">
+          <span class="text-base">📈</span>
+          <span class="text-[10px] font-medium mt-0.5">Progress</span>
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+  <script>
+    let appState = {
+      name: "N/A",
+      sex: "N/A",
+      age: null,
+      height: null,
+      weight: null,
+      conditionChecked: false,
+      hasCondition: false,
+      weights: []
+    };
+
+    let chartInstance = null;
+
+    function selectInitialTheme(mode) {
+      if (mode === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      document.getElementById('splashScreen').classList.add('opacity-0', 'pointer-events-none');
+      switchTab('home');
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('text-brand-green');
+        btn.classList.add('text-zinc-400');
+      });
+      const activeNav = document.getElementById('nav-' + tabId);
+      if (activeNav) {
+        activeNav.classList.remove('text-zinc-400');
+        activeNav.classList.add('text-brand-green');
+      }
+
+      if (tabId === 'progress') renderChart();
+    }
+
+    function saveProfile() {
+      const nameVal = document.getElementById('inputName').value.trim();
+      appState.name = nameVal || "N/A";
+      appState.sex = document.getElementById('inputSex').value;
+      appState.age = parseInt(document.getElementById('inputAge').value) || null;
+      appState.height = parseFloat(document.getElementById('inputHeight').value) || null;
+      appState.weight = parseFloat(document.getElementById('inputWeight').value) || null;
+      
+      const initials = appState.name === "N/A" ? "NA" : appState.name.substring(0, 2).toUpperCase();
+      document.getElementById('avatarBadge').innerText = initials;
+      document.getElementById('greetingUser').innerText = "WELCOME, " + appState.name.toUpperCase();
+      
+      document.getElementById('homeProfileBadge').innerText = appState.name === "N/A" ? "PENDING" : "COMPLETE";
+      document.getElementById('homeProfileBadge').className = appState.name === "N/A" ? "text-[10px] font-bold text-amber-500 uppercase tracking-wider" : "text-[10px] font-bold text-zinc-400 uppercase tracking-wider";
+
+      document.getElementById('bmiHeight').value = appState.height || '';
+      document.getElementById('bmiWeight').value = appState.weight || '';
+      
+      if (appState.weight && appState.weights.length === 0) {
+        appState.weights.push(appState.weight);
+      }
+
+      updateBmiCalc();
+      alert("Profile saved successfully!");
+    }
+
+    function updateBmiCalc() {
+      const hInput = parseFloat(document.getElementById('bmiHeight').value);
+      const wInput = parseFloat(document.getElementById('bmiWeight').value);
+
+      if (!hInput || !wInput) {
+        document.getElementById('bmiVal').innerText = "N/A";
+        document.getElementById('bmiUnit').innerText = "";
+        document.getElementById('bmiCategory').innerText = "Awaiting input";
+        document.getElementById('homeBmiBadge').innerText = "N/A";
+        document.getElementById('spectrumPointer').classList.add('opacity-0');
+        return;
+      }
+
+      const h = hInput / 100;
+      const w = wInput;
+      const bmi = (w / (h * h)).toFixed(1);
+
+      document.getElementById('bmiVal').innerText = bmi;
+      document.getElementById('bmiUnit').innerText = "kg/m²";
+      document.getElementById('homeBmiBadge').innerText = bmi + " BMI";
+
+      let cat = "Healthy range";
+      let pos = 45;
+      if (bmi < 18.5) { cat = "Underweight"; pos = 15; }
+      else if (bmi >= 25 && bmi < 30) { cat = "Overweight"; pos = 75; }
+      else if (bmi >= 30) { cat = "Obese"; pos = 92; }
+
+      document.getElementById('bmiCategory').innerText = cat;
+      document.getElementById('spectrumPointer').classList.remove('opacity-0');
+      document.getElementById('spectrumPointer').style.left = pos + "%";
+    }
+
+    function setCondition(hasCond) {
+      appState.conditionChecked = true;
+      appState.hasCondition = hasCond;
+
+      document.getElementById('condAlertYes').classList.toggle('hidden', !hasCond);
+      document.getElementById('condAlertNo').classList.toggle('hidden', hasCond);
+
+      const statusDot = document.getElementById('statusDot');
+      const statusText = document.getElementById('statusText');
+      const homeCheckBadge = document.getElementById('homeCheckBadge');
+      const homeAlertBanner = document.getElementById('homeAlertBanner');
+
+      if (!hasCond) {
+        statusDot.className = "w-2 h-2 rounded-full bg-emerald-500";
+        statusText.innerText = "Check complete";
+        homeCheckBadge.innerText = "COMPLETE";
+        homeCheckBadge.className = "text-[10px] font-bold text-emerald-500 uppercase tracking-wider";
+        homeAlertBanner.classList.add('hidden');
+        document.getElementById('plansLocked').classList.add('hidden');
+        document.getElementById('plansUnlocked').classList.remove('hidden');
+      } else {
+        statusDot.className = "w-2 h-2 rounded-full bg-amber-500";
+        statusText.innerText = "Action required";
+        homeCheckBadge.innerText = "FLAGGED";
+        homeCheckBadge.className = "text-[10px] font-bold text-amber-500 uppercase tracking-wider";
+        document.getElementById('plansLocked').classList.remove('hidden');
+        document.getElementById('plansUnlocked').classList.add('hidden');
+      }
+    }
+
+    function renderChart() {
+      const currentDisp = document.getElementById('currentWeightDisplay');
+      const diffBadge = document.getElementById('trendDiffBadge');
+
+      if (appState.weights.length === 0) {
+        currentDisp.innerText = "N/A";
+        diffBadge.innerText = "N/A";
+      } else {
+        const last = appState.weights[appState.weights.length - 1];
+        currentDisp.innerText = last + " kg";
+        if (appState.weights.length > 1) {
+          const prev = appState.weights[appState.weights.length - 2];
+          const diff = (last - prev).toFixed(1);
+          diffBadge.innerText = (diff > 0 ? "+" : "") + diff + " kg";
+        } else {
+          diffBadge.innerText = "Baseline";
+        }
+      }
+
+      const ctx = document.getElementById('weightBarChart').getContext('2d');
+      if (chartInstance) chartInstance.destroy();
+
+      chartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: appState.weights.length > 0 ? appState.weights.map((_, i) => 'Wk ' + (i + 1)) : ['No Data'],
+          datasets: [{
+            data: appState.weights.length > 0 ? appState.weights : [0],
+            backgroundColor: appState.weights.map((_, i) => i === appState.weights.length - 1 ? '#80E51A' : '#27272A'),
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#71717A', font: { size: 10 } } },
+            y: { display: false }
+          }
+        }
+      });
+    }
+
+    function addWeightLog() {
+      const val = parseFloat(document.getElementById('newLogWeight').value);
+      if (!val) return;
+      appState.weights.push(val);
+      document.getElementById('newLogWeight').value = '';
+      renderChart();
+    }
+  </script>
+</body>
+</html>
+</html>
