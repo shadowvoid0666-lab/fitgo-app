@@ -122,6 +122,13 @@
                 <li>• <strong>Progress Tracking:</strong> Weekly weight logger & live Chart.js graphs.</li>
               </ul>
             </div>
+
+            <!-- Reset Data Option -->
+            <div class="pt-2 text-center">
+              <button onclick="resetAllData()" class="text-[11px] text-zinc-500 hover:text-red-400 underline transition">
+                Reset All Saved App Data
+              </button>
+            </div>
           </div>
         </section>
 
@@ -135,13 +142,13 @@
           <form id="profileForm" onsubmit="saveProfile(event)" class="space-y-4">
             <div class="space-y-1">
               <label class="text-xs font-semibold text-zinc-300">Full Name</label>
-              <input type="text" id="pName" required placeholder="e.g., Alex Smith" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none">
+              <input type="text" id="pName" required placeholder="e.g., Alex Smith" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
             </div>
 
             <div class="grid grid-cols-2 gap-3">
               <div class="space-y-1">
                 <label class="text-xs font-semibold text-zinc-300">Age</label>
-                <input type="number" id="pAge" required min="10" max="120" placeholder="Years" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none">
+                <input type="number" id="pAge" required min="10" max="120" placeholder="Years" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
               </div>
               <div class="space-y-1">
                 <label class="text-xs font-semibold text-zinc-300">Gender (Optional)</label>
@@ -157,11 +164,11 @@
             <div class="grid grid-cols-2 gap-3">
               <div class="space-y-1">
                 <label class="text-xs font-semibold text-zinc-300">Height (cm)</label>
-                <input type="number" step="0.1" id="pHeight" required min="50" max="250" placeholder="e.g. 175" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none">
+                <input type="number" step="0.1" id="pHeight" required min="50" max="250" placeholder="e.g. 175" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
               </div>
               <div class="space-y-1">
                 <label class="text-xs font-semibold text-zinc-300">Weight (kg)</label>
-                <input type="number" step="0.1" id="pWeight" required min="20" max="300" placeholder="e.g. 70" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none">
+                <input type="number" step="0.1" id="pWeight" required min="20" max="300" placeholder="e.g. 70" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
               </div>
             </div>
 
@@ -235,7 +242,7 @@
 
           <div id="otherInputContainer" class="hidden space-y-1">
             <label class="text-xs font-semibold text-zinc-300">Specify Other Condition</label>
-            <input type="text" id="otherConditionText" placeholder="e.g., Thyroid condition, Pregnancy" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none">
+            <input type="text" id="otherConditionText" placeholder="e.g., Thyroid condition, Pregnancy" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
           </div>
 
           <button onclick="submitConditionCheck()" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-xl hover:opacity-90 transition">
@@ -277,11 +284,11 @@
               <div class="grid grid-cols-2 gap-3">
                 <div class="space-y-1">
                   <label class="text-xs text-zinc-400">Starting Weight (kg)</label>
-                  <input type="number" step="0.1" id="trackStartWeight" required class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none">
+                  <input type="number" step="0.1" id="trackStartWeight" required class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
                 </div>
                 <div class="space-y-1">
                   <label class="text-xs text-zinc-400">Goal Weight (kg)</label>
-                  <input type="number" step="0.1" id="trackGoalWeight" required class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none">
+                  <input type="number" step="0.1" id="trackGoalWeight" required class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
                 </div>
               </div>
               <button type="submit" class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl text-xs transition border border-zinc-700">
@@ -304,7 +311,7 @@
             <!-- Proper Exercise & Diet -->
             <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
               <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Proper Exercise & Diet</h4>
-              <p id="guideExerciseDiet" class="text-xs text-zinc-300 leading-relaxed"></p>
+              <p id="guideExerciseDiet" class="text-xs text-zinc-300 leading-relaxed whitespace-pre-line"></p>
             </div>
 
             <!-- Hydration Reminders -->
@@ -316,7 +323,7 @@
             <!-- Food Suggestions & Allergy Cautions -->
             <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
               <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Food Suggestions & Allergy Cautions</h4>
-              <p id="guideFoodSuggestions" class="text-xs text-zinc-300 leading-relaxed"></p>
+              <p id="guideFoodSuggestions" class="text-xs text-zinc-300 leading-relaxed whitespace-pre-line"></p>
               <div class="mt-2 p-2.5 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-300 text-[11px]">
                 ⚠️ <strong>Allergy Caution:</strong> Always check ingredient labels for common allergens (nuts, dairy, soy, gluten, seafood) before modifying your meal plan.
               </div>
@@ -383,11 +390,11 @@
               <div class="grid grid-cols-2 gap-3">
                 <div class="space-y-1">
                   <label class="text-xs text-zinc-400">Check-in Label</label>
-                  <input type="text" id="logWeekLabel" required placeholder="e.g., Week 2" class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none">
+                  <input type="text" id="logWeekLabel" required placeholder="e.g., Week 2" class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
                 </div>
                 <div class="space-y-1">
                   <label class="text-xs text-zinc-400">Weight (kg)</label>
-                  <input type="number" step="0.1" id="logWeightVal" required placeholder="e.g., 68.5" class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none">
+                  <input type="number" step="0.1" id="logWeightVal" required placeholder="e.g., 68.5" class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
                 </div>
               </div>
               <button type="submit" class="w-full py-3 bg-brand-green text-black font-semibold rounded-xl text-xs hover:opacity-90 transition">
@@ -426,34 +433,104 @@
     </div>
   </div>
 
-  <!-- APPLICATION JAVASCRIPT LOGIC -->
+  <!-- APPLICATION JAVASCRIPT LOGIC WITH LOCALSTORAGE PERSISTENCE -->
   <script>
+    const STORAGE_KEY = 'fitgo_saved_state_v1';
+
     let appData = {
-      theme: 'dark',
+      theme: null,
       name: '',
       age: null,
+      gender: '',
       height: null,
       weight: null,
       bmi: null,
-      bmiCategory: '', // Underweight, Normal, Overweight, Obese
-      recommendedTracker: '', // lose, maintain, gain
+      bmiCategory: '',
+      recommendedTracker: '',
       conditionChecked: false,
       hasConditions: false,
+      selectedConditions: [],
+      otherConditionText: '',
       medicalCleared: false,
       trackerActive: false,
       selectedTrackerType: '',
       startWeight: null,
       goalWeight: null,
-      weightRecords: [] // { label: 'Start', weight: 70 }
+      weightRecords: []
     };
 
     let progressChartInstance = null;
 
-    function setTheme(theme) {
-      appData.theme = theme;
+    // Save current state to device localStorage
+    function persistData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+      } catch (e) {
+        console.error('Failed to save data to localStorage:', e);
+      }
+    }
+
+    // Load saved state when app starts or refreshes
+    function loadSavedData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+
+        const saved = JSON.parse(raw);
+        appData = { ...appData, ...saved };
+
+        // 1. Restore Theme & Bypass Splash if already chosen
+        if (appData.theme) {
+          applyThemeStyles(appData.theme);
+          const splash = document.getElementById('splashScreen');
+          if (splash) splash.remove();
+        }
+
+        // 2. Restore Profile Inputs & BMI UI
+        if (appData.name) document.getElementById('pName').value = appData.name;
+        if (appData.age) document.getElementById('pAge').value = appData.age;
+        if (appData.gender) document.getElementById('pGender').value = appData.gender;
+        if (appData.height) document.getElementById('pHeight').value = appData.height;
+        if (appData.weight) document.getElementById('pWeight').value = appData.weight;
+
+        if (appData.bmi) {
+          displayBmiUI();
+          updateTrackerUI();
+        }
+
+        // 3. Restore Health Conditions Checkboxes & Banners
+        if (appData.selectedConditions && appData.selectedConditions.length > 0) {
+          document.querySelectorAll('.condition-cb').forEach(cb => {
+            if (appData.selectedConditions.includes(cb.value)) {
+              cb.checked = true;
+            }
+          });
+        }
+        if (appData.otherConditionText) {
+          document.getElementById('otherConditionCb').checked = true;
+          document.getElementById('otherInputContainer').classList.remove('hidden');
+          document.getElementById('otherConditionText').value = appData.otherConditionText;
+        }
+        if (appData.conditionChecked) {
+          displayConditionUI();
+        }
+
+        // 4. Restore Active Tracker, Goals & Progress Graph
+        if (appData.trackerActive && appData.startWeight && appData.goalWeight) {
+          document.getElementById('trackStartWeight').value = appData.startWeight;
+          document.getElementById('trackGoalWeight').value = appData.goalWeight;
+          document.getElementById('homeTrackerVal').innerText = `${appData.selectedTrackerType.toUpperCase()} WEIGHT`;
+          document.getElementById('homeTrackerSub').innerText = `Target: ${appData.goalWeight} kg`;
+          renderTrackerGuide();
+          renderProgressData();
+        }
+      } catch (e) {
+        console.error('Failed to load saved data:', e);
+      }
+    }
+
+    function applyThemeStyles(theme) {
       const container = document.getElementById('appContainer');
-      const splash = document.getElementById('splashScreen');
-      
       if (theme === 'light') {
         container.classList.remove('dark', 'bg-brand-darkBg', 'text-white');
         container.classList.add('bg-brand-lightBg', 'text-slate-900');
@@ -461,9 +538,18 @@
         container.classList.add('dark', 'bg-brand-darkBg', 'text-white');
         container.classList.remove('bg-brand-lightBg', 'text-slate-900');
       }
+    }
+
+    function setTheme(theme) {
+      appData.theme = theme;
+      persistData();
+      applyThemeStyles(theme);
       
-      splash.style.opacity = '0';
-      setTimeout(() => splash.remove(), 500);
+      const splash = document.getElementById('splashScreen');
+      if (splash) {
+        splash.style.opacity = '0';
+        setTimeout(() => splash.remove(), 500);
+      }
     }
 
     function switchTab(tabId) {
@@ -493,79 +579,74 @@
       }
     }
 
-    function saveProfile(e) {
-      e.preventDefault();
-      appData.name = document.getElementById('pName').value;
-      appData.age = parseFloat(document.getElementById('pAge').value);
-      appData.height = parseFloat(document.getElementById('pHeight').value);
-      appData.weight = parseFloat(document.getElementById('pWeight').value);
-
-      // BMI Calculation: weight (kg) / [height (m)]^2
-      const heightM = appData.height / 100;
-      appData.bmi = parseFloat((appData.weight / (heightM * heightM)).toFixed(1));
-
-      // Classification
+    function displayBmiUI() {
       let markerPos = 50;
       if (appData.bmi < 18.5) {
-        appData.bmiCategory = 'Underweight';
-        appData.recommendedTracker = 'gain';
         markerPos = Math.max(5, (appData.bmi / 18.5) * 25);
-      } else if (appData.bmi >= 18.5 && appData.bmi <= 24.9) {
-        appData.bmiCategory = 'Normal';
-        appData.recommendedTracker = 'maintain';
+      } else if (appData.bmi <= 24.9) {
         markerPos = 25 + ((appData.bmi - 18.5) / 6.4) * 25;
-      } else if (appData.bmi >= 25 && appData.bmi <= 29.9) {
-        appData.bmiCategory = 'Overweight';
-        appData.recommendedTracker = 'lose';
+      } else if (appData.bmi <= 29.9) {
         markerPos = 50 + ((appData.bmi - 25) / 4.9) * 25;
       } else {
-        appData.bmiCategory = 'Obese';
-        appData.recommendedTracker = 'lose';
         markerPos = Math.min(95, 75 + ((appData.bmi - 30) / 10) * 25);
       }
 
-      // Update UI Result Card
       document.getElementById('bmiResultCard').classList.remove('hidden');
       document.getElementById('bmiScoreText').innerText = appData.bmi;
       document.getElementById('bmiBadge').innerText = appData.bmiCategory;
       document.getElementById('bmiMarker').style.left = markerPos + '%';
       document.getElementById('bmiRecommendationNote').innerHTML = `Based on your BMI of <strong>${appData.bmi} (${appData.bmiCategory})</strong>, your recommended fitness tracker is <strong>${appData.recommendedTracker.toUpperCase()} WEIGHT</strong>.`;
 
-      // Update Home Status
       document.getElementById('homeBmiVal').innerText = `${appData.bmi} (${appData.bmiCategory})`;
       document.getElementById('homeBmiCategory').innerText = `Recommended: ${appData.recommendedTracker.toUpperCase()}`;
+    }
 
-      // Initialize initial weight record if empty
-      if(appData.weightRecords.length === 0) {
+    function saveProfile(e) {
+      e.preventDefault();
+      appData.name = document.getElementById('pName').value;
+      appData.age = parseFloat(document.getElementById('pAge').value);
+      appData.gender = document.getElementById('pGender').value;
+      appData.height = parseFloat(document.getElementById('pHeight').value);
+      appData.weight = parseFloat(document.getElementById('pWeight').value);
+
+      const heightM = appData.height / 100;
+      appData.bmi = parseFloat((appData.weight / (heightM * heightM)).toFixed(1));
+
+      if (appData.bmi < 18.5) {
+        appData.bmiCategory = 'Underweight';
+        appData.recommendedTracker = 'gain';
+      } else if (appData.bmi >= 18.5 && appData.bmi <= 24.9) {
+        appData.bmiCategory = 'Normal';
+        appData.recommendedTracker = 'maintain';
+      } else if (appData.bmi >= 25 && appData.bmi <= 29.9) {
+        appData.bmiCategory = 'Overweight';
+        appData.recommendedTracker = 'lose';
+      } else {
+        appData.bmiCategory = 'Obese';
+        appData.recommendedTracker = 'lose';
+      }
+
+      if (appData.weightRecords.length === 0) {
         appData.weightRecords = [{ label: 'Starting', weight: appData.weight }];
       }
 
+      persistData();
+      displayBmiUI();
       updateTrackerUI();
       alert('Profile saved and BMI calculated successfully!');
     }
 
-    function submitConditionCheck() {
-      const checkboxes = document.querySelectorAll('.condition-cb:checked');
-      const otherChecked = document.getElementById('otherConditionCb').checked;
-      const otherText = document.getElementById('otherConditionText').value.trim();
-
-      let hasCond = checkboxes.length > 0 || (otherChecked && otherText !== '');
-      appData.conditionChecked = true;
-      appData.hasConditions = hasCond;
-
+    function displayConditionUI() {
       const alertBox = document.getElementById('conditionResultAlert');
       alertBox.classList.remove('hidden');
-
       const banner = document.getElementById('homeAlertBanner');
 
-      if (hasCond) {
-        appData.medicalCleared = false;
+      if (appData.hasConditions) {
         alertBox.className = "p-4 rounded-xl text-xs space-y-2 bg-amber-500/10 border border-amber-500/30 text-amber-300";
         alertBox.innerHTML = `⚠️ <strong>Medical Consultation Recommended:</strong> Because you selected existing health conditions, you are advised to consult a doctor first to determine whether you are fit to follow the app's fitness recommendations.`;
         banner.className = "p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between cursor-pointer";
         banner.innerHTML = `<div class="flex items-center gap-3"><span class="text-xl">⚠️</span><div><h4 class="text-sm font-bold text-amber-400">Consult Doctor Required</h4><p class="text-xs text-zinc-400">Existing health conditions noted.</p></div></div><span class="text-amber-400 text-sm font-bold">→</span>`;
       } else {
-        appData.medicalCleared = true;
         alertBox.className = "p-4 rounded-xl text-xs space-y-2 bg-brand-green/10 border border-brand-green/30 text-brand-green";
         alertBox.innerHTML = `✅ <strong>Cleared to Proceed:</strong> You reported no existing health conditions. You can now access your recommended fitness tracker!`;
         banner.className = "p-4 rounded-2xl bg-brand-green/10 border border-brand-green/30 flex items-center justify-between cursor-pointer";
@@ -573,6 +654,23 @@
         document.getElementById('statusDot').className = "w-2 h-2 rounded-full bg-brand-green";
         document.getElementById('statusText').innerText = "Ready";
       }
+    }
+
+    function submitConditionCheck() {
+      const checkboxes = document.querySelectorAll('.condition-cb:checked');
+      const otherChecked = document.getElementById('otherConditionCb').checked;
+      const otherText = document.getElementById('otherConditionText').value.trim();
+
+      appData.selectedConditions = Array.from(checkboxes).map(cb => cb.value);
+      appData.otherConditionText = otherChecked ? otherText : '';
+
+      let hasCond = appData.selectedConditions.length > 0 || (otherChecked && otherText !== '');
+      appData.conditionChecked = true;
+      appData.hasConditions = hasCond;
+      appData.medicalCleared = !hasCond;
+
+      persistData();
+      displayConditionUI();
     }
 
     function updateTrackerUI() {
@@ -606,14 +704,12 @@
         return;
       }
 
-      // Check if starting weight matches profile weight
       if (startW !== appData.weight) {
         errBox.innerText = `Starting weight (${startW} kg) does not match your profile weight (${appData.weight} kg). Please enter matching information.`;
         errBox.classList.remove('hidden');
         return;
       }
 
-      // Validate goal weight based on recommended tracker
       let validGoal = true;
       let reason = "";
 
@@ -640,14 +736,20 @@
       appData.startWeight = startW;
       appData.goalWeight = goalW;
 
-      appData.weightRecords[0].weight = startW;
+      if (appData.weightRecords.length === 0) {
+        appData.weightRecords = [{ label: 'Starting', weight: startW }];
+      } else {
+        appData.weightRecords[0].weight = startW;
+      }
+
+      persistData();
 
       document.getElementById('homeTrackerVal').innerText = `${appData.selectedTrackerType.toUpperCase()} WEIGHT`;
       document.getElementById('homeTrackerSub').innerText = `Target: ${goalW} kg`;
 
       renderTrackerGuide();
       renderProgressData();
-      alert('Tracker activated successfully!');
+      alert('Tracker activated and saved!');
     }
 
     function renderTrackerGuide() {
@@ -664,7 +766,7 @@
         subEl.innerText = "Focus on a sustainable caloric deficit, cardiovascular conditioning, and clean whole foods.";
         exDietEl.innerText = "• Exercise: Combine 150-300 minutes of moderate cardio (brisk walking, cycling, swimming) per week with 2-3 sessions of full-body resistance training.\n• Diet: Maintain a moderate caloric deficit with high fiber, lean proteins, and complex carbohydrates.";
         foodEl.innerText = "Recommended Foods: Leafy greens, skinless chicken breast, fish, oats, lentils, berries, Greek yogurt.\nAvoid: Sugary beverages, refined pastries, fried fast foods, and excess saturated fats.";
-      } else if (appData.selectedTrackerType === 'gain') {
+      } else if (type === 'gain') {
         titleEl.innerText = "Gain Weight Guide";
         subEl.innerText = "Focus on a caloric surplus, progressive resistance training, and nutrient-dense protein intake.";
         exDietEl.innerText = "• Exercise: Focus on heavy compound weightlifting (squats, deadlifts, bench presses) 3-4 times a week with adequate rest days for muscle hypertrophy.\n• Diet: Consume a caloric surplus with frequent protein-rich meals and healthy fats.";
@@ -683,9 +785,11 @@
       const weight = parseFloat(document.getElementById('logWeightVal').value);
 
       appData.weightRecords.push({ label, weight });
+      persistData();
+      
       document.getElementById('weightLogForm').reset();
       renderProgressData();
-      alert('Weight record added and progress updated!');
+      alert('Weight record saved and progress updated!');
     }
 
     function renderProgressData() {
@@ -754,6 +858,2632 @@
         }
       });
     }
+
+    function resetAllData() {
+      if (confirm('Are you sure you want to clear all your saved profile, BMI, and weight records?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
+    }
+
+    // Initialize saved data immediately when page opens
+    window.addEventListener('DOMContentLoaded', loadSavedData);
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIT GO Mobile App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { green: '#80E51A', darkGreen: '#1F7A50', darkBg: '#0D0E0D', darkCard: '#151715', lightBg: '#F2F1EC', lightCard: '#FFFFFF' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .card-active { border-color: #80E51A !important; background-color: rgba(128, 229, 26, 0.05); }
+  </style>
+</head>
+<body class="bg-brand-darkBg text-white min-h-screen flex justify-center items-center p-0 sm:p-4">
+
+  <!-- Mobile Frame Container -->
+  <div id="appContainer" class="w-full max-w-md h-[100vh] sm:h-[844px] bg-brand-darkBg text-white sm:rounded-[40px] shadow-2xl flex flex-col overflow-hidden relative border border-zinc-800 transition-colors duration-300">
+    
+    <!-- SPLASH SCREEN -->
+    <div id="splashScreen" class="absolute inset-0 z-50 bg-[#141514] flex flex-col justify-between p-8 transition-opacity duration-500">
+      <div class="flex-1 flex flex-col items-center justify-center text-center">
+        <div class="w-24 h-24 mb-6">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M 25 65 L 45 45 L 60 55 L 80 35" fill="none" stroke="#80E51A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+            <polygon points="75,25 90,35 75,45" fill="#80E51A"/>
+            <path d="M 35 75 L 50 60 L 65 70" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="65" cy="25" r="8" fill="#80E51A"/>
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold tracking-tight text-white mb-2">FitGo</h1>
+        <p class="text-zinc-400 text-sm">Your health & fitness direction</p>
+      </div>
+
+      <div class="space-y-3 w-full">
+        <button onclick="setTheme('dark')" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-full hover:opacity-90 transition">
+          Use Dark Mode
+        </button>
+        <button onclick="setTheme('light')" class="w-full py-3.5 bg-zinc-800 text-white font-semibold rounded-full border border-zinc-700 hover:bg-zinc-700 transition">
+          Switch to Light Mode
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN APP WRAPPER -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      
+      <!-- Top Header (No Profile Picture / No Personalized Greetings) -->
+      <header class="px-5 pt-5 pb-3 flex items-center justify-between border-b border-zinc-800/50 bg-inherit">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-green" viewBox="0 0 100 100">
+            <path d="M 25 65 L 45 45 L 60 55 L 80 35" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round"/>
+            <circle cx="65" cy="25" r="10" fill="currentColor"/>
+          </svg>
+          <span class="font-black tracking-wider text-lg">FIT <span class="text-brand-green">GO</span></span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <div id="statusBadge" class="flex items-center gap-1.5 px-3 py-1 bg-zinc-800/50 rounded-full border border-zinc-700 text-xs text-zinc-300">
+            <span id="statusDot" class="w-2 h-2 rounded-full bg-orange-500"></span>
+            <span id="statusText">Action required</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Main View Area -->
+      <main class="flex-1 overflow-y-auto hide-scrollbar pb-20">
+        
+        <!-- 1. HOME TAB -->
+        <section id="tab-home" class="tab-content">
+          <div class="px-6 pt-6 pb-8 bg-zinc-900/50 border-b border-zinc-800">
+            <p class="text-xs uppercase tracking-wider text-brand-green font-semibold mb-1">WELCOME</p>
+            <h2 class="text-2xl font-bold leading-tight mb-2">Your healthier direction starts here.</h2>
+            <p class="text-xs text-zinc-400">A guided fitness plan that adapts to your body, goal, and safety check—without quick fixes.</p>
+          </div>
+
+          <div class="p-5 space-y-4">
+            <div id="homeAlertBanner" onclick="switchTab('check')" class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between cursor-pointer">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">⚠️</span>
+                <div>
+                  <h4 class="text-sm font-bold text-amber-400">Condition Check Needed</h4>
+                  <p class="text-xs text-zinc-400">Complete health verification to unlock tracker.</p>
+                </div>
+              </div>
+              <span class="text-amber-400 text-sm font-bold">→</span>
+            </div>
+
+            <!-- Quick Overview Cards -->
+            <div class="grid grid-cols-2 gap-3">
+              <div onclick="switchTab('profile')" class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-brand-green/50 transition">
+                <span class="text-xs text-zinc-400 block mb-1">BMI Status</span>
+                <h3 id="homeBmiVal" class="text-lg font-bold text-brand-green">Not Calculated</h3>
+                <p id="homeBmiCategory" class="text-xs text-zinc-500 mt-1">Update profile</p>
+              </div>
+              <div onclick="switchTab('tracker')" class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-brand-green/50 transition">
+                <span class="text-xs text-zinc-400 block mb-1">Active Tracker</span>
+                <h3 id="homeTrackerVal" class="text-lg font-bold text-zinc-300">Locked</h3>
+                <p id="homeTrackerSub" class="text-xs text-zinc-500 mt-1">Complete steps</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800">
+              <h4 class="text-sm font-bold mb-2 text-brand-green">App Features</h4>
+              <ul class="text-xs text-zinc-400 space-y-2">
+                <li>• <strong>BMI Calculator:</strong> Accurate classification diagram (Underweight to Obese).</li>
+                <li>• <strong>Condition Checker:</strong> Health & medical clearance assessment.</li>
+                <li>• <strong>Matched Trackers:</strong> Tailored diet, hydration, and exercise guides.</li>
+                <li>• <strong>Progress Tracking:</strong> Weekly weight logger & live Chart.js graphs.</li>
+              </ul>
+            </div>
+
+            <!-- Reset Data Option -->
+            <div class="pt-2 text-center">
+              <button onclick="resetAllData()" class="text-[11px] text-zinc-500 hover:text-red-400 underline transition">
+                Reset All Saved App Data
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. PROFILE & BMI TAB -->
+        <section id="tab-profile" class="tab-content hidden p-5 space-y-6">
+          <div>
+            <h2 class="text-xl font-bold mb-1">User Profile & BMI</h2>
+            <p class="text-xs text-zinc-400">Enter your personal information to calculate your BMI and assign your tracker.</p>
+          </div>
+
+          <form id="profileForm" onsubmit="saveProfile(event)" class="space-y-4">
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-zinc-300">Full Name</label>
+              <input type="text" id="pName" required placeholder="e.g., Alex Smith" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Age</label>
+                <input type="number" id="pAge" required min="10" max="120" placeholder="Years" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Gender (Optional)</label>
+                <select id="pGender" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-zinc-300">
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Height (cm)</label>
+                <input type="number" step="0.1" id="pHeight" required min="50" max="250" placeholder="e.g. 175" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Weight (kg)</label>
+                <input type="number" step="0.1" id="pWeight" required min="20" max="300" placeholder="e.g. 70" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-xl hover:opacity-90 transition shadow-lg shadow-brand-green/20">
+              Calculate BMI & Save Profile
+            </button>
+          </form>
+
+          <!-- BMI Range Diagram & Results Display -->
+          <div id="bmiResultCard" class="hidden p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4">
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-xs text-zinc-400">Your Calculated BMI</span>
+                <h3 id="bmiScoreText" class="text-2xl font-black text-brand-green">0.0</h3>
+              </div>
+              <div id="bmiBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-brand-green/20 text-brand-green">
+                Normal
+              </div>
+            </div>
+
+            <!-- BMI Classification Scale Diagram -->
+            <div class="space-y-2">
+              <div class="text-xs text-zinc-400 flex justify-between">
+                <span>Underweight (&lt;18.5)</span>
+                <span>Normal (18.5-24.9)</span>
+                <span>Overweight (25-29.9)</span>
+                <span>Obese (&ge;30)</span>
+              </div>
+              <div class="h-3 w-full rounded-full bg-gradient-to-r from-blue-400 via-brand-green via-yellow-400 to-red-500 relative">
+                <div id="bmiMarker" class="absolute top-0 bottom-0 w-1.5 bg-white shadow-md transform -translate-x-1/2 transition-all duration-500" style="left: 50%;"></div>
+              </div>
+            </div>
+
+            <p id="bmiRecommendationNote" class="text-xs text-zinc-300 bg-black/30 p-3 rounded-xl border border-zinc-800"></p>
+          </div>
+        </section>
+
+        <!-- 3. CONDITION CHECKER TAB -->
+        <section id="tab-check" class="tab-content hidden p-5 space-y-5">
+          <div>
+            <h2 class="text-xl font-bold mb-1">Health Condition Checker</h2>
+            <p class="text-xs text-zinc-400">Select any existing health conditions that apply to you for safe guidance.</p>
+          </div>
+
+          <div class="space-y-3" id="conditionChecklist">
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Hypertension" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">High Blood Pressure / Hypertension</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Diabetes" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Diabetes (Type 1 or Type 2)</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Heart Condition" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Heart Disease or Cardiovascular Issues</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Joint / Bone Injuries" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Severe Joint, Knee, or Back Pain / Injury</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Asthma / Respiratory" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Asthma or Chronic Respiratory Conditions</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" id="otherConditionCb" onchange="toggleOtherInput(this)" value="Others" class="w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Others (Specify below)</span>
+            </label>
+          </div>
+
+          <div id="otherInputContainer" class="hidden space-y-1">
+            <label class="text-xs font-semibold text-zinc-300">Specify Other Condition</label>
+            <input type="text" id="otherConditionText" placeholder="e.g., Thyroid condition, Pregnancy" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+          </div>
+
+          <button onclick="submitConditionCheck()" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-xl hover:opacity-90 transition">
+            Submit Health Assessment
+          </button>
+
+          <div id="conditionResultAlert" class="hidden p-4 rounded-xl text-xs space-y-2 border"></div>
+        </section>
+
+        <!-- 4 & 5. FITNESS TRACKER & GUIDES TAB -->
+        <section id="tab-tracker" class="tab-content hidden p-5 space-y-5">
+          <div>
+            <h2 class="text-xl font-bold mb-1">Fitness Tracker</h2>
+            <p class="text-xs text-zinc-400">Your appropriate tracker is unlocked based on your BMI calculation.</p>
+          </div>
+
+          <!-- Locked / Unlocked Tracker Categories Container -->
+          <div class="grid grid-cols-3 gap-2">
+            <div id="card-lose" class="p-3 rounded-xl border text-center opacity-50 bg-zinc-900/30">
+              <span class="text-xs block font-bold text-zinc-300">Lose Weight</span>
+              <span id="badge-lose" class="text-[10px] text-zinc-500">Locked</span>
+            </div>
+            <div id="card-maintain" class="p-3 rounded-xl border text-center opacity-50 bg-zinc-900/30">
+              <span class="text-xs block font-bold text-zinc-300">Maintain</span>
+              <span id="badge-maintain" class="text-[10px] text-zinc-500">Locked</span>
+            </div>
+            <div id="card-gain" class="p-3 rounded-xl border text-center opacity-50 bg-zinc-900/30">
+              <span class="text-xs block font-bold text-zinc-300">Gain Weight</span>
+              <span id="badge-gain" class="text-[10px] text-zinc-500">Locked</span>
+            </div>
+          </div>
+
+          <!-- Weight Goal Setup Form with Strict Validation -->
+          <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4">
+            <h3 class="text-sm font-bold text-brand-green">Goal Weight Verification</h3>
+            <p class="text-xs text-zinc-400">Starting weight must match your profile weight, and goal weight must match your tracker's direction.</p>
+            
+            <form id="trackerGoalForm" onsubmit="submitTrackerGoal(event)" class="space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Starting Weight (kg)</label>
+                  <input type="number" step="0.1" id="trackStartWeight" required class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Goal Weight (kg)</label>
+                  <input type="number" step="0.1" id="trackGoalWeight" required class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+              </div>
+              <button type="submit" class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl text-xs transition border border-zinc-700">
+                Activate Tracker & Guide
+              </button>
+            </form>
+            <div id="trackerErrorMsg" class="hidden p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs"></div>
+          </div>
+
+          <!-- Active Tracker Guide Content (Dynamically Populated) -->
+          <div id="trackerGuideContent" class="hidden space-y-4">
+            <div class="p-4 rounded-2xl bg-zinc-900/60 border border-brand-green/30 space-y-3">
+              <div class="flex justify-between items-center">
+                <h3 id="guideTitle" class="text-base font-bold text-brand-green">Guide</h3>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] bg-brand-green text-black font-bold">ACTIVE</span>
+              </div>
+              <p id="guideSubtitle" class="text-xs text-zinc-300"></p>
+            </div>
+
+            <!-- Proper Exercise & Diet -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Proper Exercise & Diet</h4>
+              <p id="guideExerciseDiet" class="text-xs text-zinc-300 leading-relaxed whitespace-pre-line"></p>
+            </div>
+
+            <!-- Hydration Reminders -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Hydration Reminder</h4>
+              <p class="text-xs text-zinc-300">Drink at least 8 to 10 glasses (2.5 - 3 liters) of water daily. Hydration supports metabolism, cellular function, and muscle recovery.</p>
+            </div>
+
+            <!-- Food Suggestions & Allergy Cautions -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Food Suggestions & Allergy Cautions</h4>
+              <p id="guideFoodSuggestions" class="text-xs text-zinc-300 leading-relaxed whitespace-pre-line"></p>
+              <div class="mt-2 p-2.5 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-300 text-[11px]">
+                ⚠️ <strong>Allergy Caution:</strong> Always check ingredient labels for common allergens (nuts, dairy, soy, gluten, seafood) before modifying your meal plan.
+              </div>
+            </div>
+
+            <!-- Educational Links on Body Fat -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Educational Resources on Body Fat</h4>
+              <p class="text-xs text-zinc-400">Learn how regional body fat deposits (belly, facial, arm, and leg fats) respond to consistent nutrition and physical conditioning:</p>
+              <div class="space-y-1.5 pt-1 text-xs">
+                <a href="https://www.healthline.com/nutrition/targeted-weight-loss" target="_blank" class="block text-brand-green hover:underline">• Understanding Spot Reduction & Fat Loss Mechanics</a>
+                <a href="https://www.mayoclinic.org/healthy-lifestyle/weight-loss/in-depth/belly-fat/art-20045809" target="_blank" class="block text-brand-green hover:underline">• Visceral Belly Fat vs. Subcutaneous Fat Guide</a>
+                <a href="https://www.medicalnewstoday.com/articles/body-fat-percentage" target="_blank" class="block text-brand-green hover:underline">• Body Fat Distribution Across Arms, Legs, and Face</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. FITNESS PROGRESS TAB -->
+        <section id="tab-progress" class="tab-content hidden p-5 space-y-5">
+          <div>
+            <h2 class="text-xl font-bold mb-1">Fitness Progress</h2>
+            <p class="text-xs text-zinc-400">Track your weight journey, log weekly progress, and view remaining goals.</p>
+          </div>
+
+          <!-- Summary Metrics Cards -->
+          <div class="grid grid-cols-3 gap-2">
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-center">
+              <span class="text-[10px] text-zinc-400 block">Starting</span>
+              <h4 id="progStartVal" class="text-sm font-bold text-white">0 kg</h4>
+            </div>
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-center">
+              <span class="text-[10px] text-zinc-400 block">Current</span>
+              <h4 id="progCurrentVal" class="text-sm font-bold text-brand-green">0 kg</h4>
+            </div>
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-center">
+              <span class="text-[10px] text-zinc-400 block">Target Goal</span>
+              <h4 id="progTargetVal" class="text-sm font-bold text-blue-400">0 kg</h4>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-zinc-400 block">Remaining Weight to Target</span>
+              <h4 id="progRemainingVal" class="text-lg font-black text-white">0.0 kg</h4>
+            </div>
+            <div id="progDiffBadge" class="px-3 py-1 bg-brand-green/20 text-brand-green text-xs font-bold rounded-full">
+              Diff: 0.0 kg
+            </div>
+          </div>
+
+          <!-- Chart.js Graph Container -->
+          <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+            <h3 class="text-xs font-bold text-zinc-300 uppercase tracking-wider">Weight Progress Bar Chart</h3>
+            <div class="h-56 w-full relative">
+              <canvas id="progressChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Weekly Weight Entry Logger -->
+          <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+            <h3 class="text-sm font-bold text-brand-green">Log Weekly Weight Record</h3>
+            <form id="weightLogForm" onsubmit="addWeightRecord(event)" class="space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Check-in Label</label>
+                  <input type="text" id="logWeekLabel" required placeholder="e.g., Week 2" class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Weight (kg)</label>
+                  <input type="number" step="0.1" id="logWeightVal" required placeholder="e.g., 68.5" class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+              </div>
+              <button type="submit" class="w-full py-3 bg-brand-green text-black font-semibold rounded-xl text-xs hover:opacity-90 transition">
+                Record & Update Graph
+              </button>
+            </form>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Bottom Navigation Bar -->
+      <nav class="absolute bottom-0 left-0 right-0 h-16 bg-zinc-950 border-t border-zinc-800 flex items-center justify-around px-2 z-40">
+        <button onclick="switchTab('home')" class="nav-btn flex flex-col items-center gap-1 text-brand-green" data-tab="home">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span class="text-[10px] font-medium">Home</span>
+        </button>
+        <button onclick="switchTab('profile')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="profile">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          <span class="text-[10px] font-medium">Profile</span>
+        </button>
+        <button onclick="switchTab('check')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="check">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="text-[10px] font-medium">Check</span>
+        </button>
+        <button onclick="switchTab('tracker')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="tracker">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span class="text-[10px] font-medium">Tracker</span>
+        </button>
+        <button onclick="switchTab('progress')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="progress">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <span class="text-[10px] font-medium">Progress</span>
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- APPLICATION JAVASCRIPT LOGIC WITH LOCALSTORAGE PERSISTENCE -->
+  <script>
+    const STORAGE_KEY = 'fitgo_saved_state_v1';
+
+    let appData = {
+      theme: null,
+      name: '',
+      age: null,
+      gender: '',
+      height: null,
+      weight: null,
+      bmi: null,
+      bmiCategory: '',
+      recommendedTracker: '',
+      conditionChecked: false,
+      hasConditions: false,
+      selectedConditions: [],
+      otherConditionText: '',
+      medicalCleared: false,
+      trackerActive: false,
+      selectedTrackerType: '',
+      startWeight: null,
+      goalWeight: null,
+      weightRecords: []
+    };
+
+    let progressChartInstance = null;
+
+    // Save current state to device localStorage
+    function persistData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+      } catch (e) {
+        console.error('Failed to save data to localStorage:', e);
+      }
+    }
+
+    // Load saved state when app starts or refreshes
+    function loadSavedData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+
+        const saved = JSON.parse(raw);
+        appData = { ...appData, ...saved };
+
+        // 1. Restore Theme & Bypass Splash if already chosen
+        if (appData.theme) {
+          applyThemeStyles(appData.theme);
+          const splash = document.getElementById('splashScreen');
+          if (splash) splash.remove();
+        }
+
+        // 2. Restore Profile Inputs & BMI UI
+        if (appData.name) document.getElementById('pName').value = appData.name;
+        if (appData.age) document.getElementById('pAge').value = appData.age;
+        if (appData.gender) document.getElementById('pGender').value = appData.gender;
+        if (appData.height) document.getElementById('pHeight').value = appData.height;
+        if (appData.weight) document.getElementById('pWeight').value = appData.weight;
+
+        if (appData.bmi) {
+          displayBmiUI();
+          updateTrackerUI();
+        }
+
+        // 3. Restore Health Conditions Checkboxes & Banners
+        if (appData.selectedConditions && appData.selectedConditions.length > 0) {
+          document.querySelectorAll('.condition-cb').forEach(cb => {
+            if (appData.selectedConditions.includes(cb.value)) {
+              cb.checked = true;
+            }
+          });
+        }
+        if (appData.otherConditionText) {
+          document.getElementById('otherConditionCb').checked = true;
+          document.getElementById('otherInputContainer').classList.remove('hidden');
+          document.getElementById('otherConditionText').value = appData.otherConditionText;
+        }
+        if (appData.conditionChecked) {
+          displayConditionUI();
+        }
+
+        // 4. Restore Active Tracker, Goals & Progress Graph
+        if (appData.trackerActive && appData.startWeight && appData.goalWeight) {
+          document.getElementById('trackStartWeight').value = appData.startWeight;
+          document.getElementById('trackGoalWeight').value = appData.goalWeight;
+          document.getElementById('homeTrackerVal').innerText = `${appData.selectedTrackerType.toUpperCase()} WEIGHT`;
+          document.getElementById('homeTrackerSub').innerText = `Target: ${appData.goalWeight} kg`;
+          renderTrackerGuide();
+          renderProgressData();
+        }
+      } catch (e) {
+        console.error('Failed to load saved data:', e);
+      }
+    }
+
+    function applyThemeStyles(theme) {
+      const container = document.getElementById('appContainer');
+      if (theme === 'light') {
+        container.classList.remove('dark', 'bg-brand-darkBg', 'text-white');
+        container.classList.add('bg-brand-lightBg', 'text-slate-900');
+      } else {
+        container.classList.add('dark', 'bg-brand-darkBg', 'text-white');
+        container.classList.remove('bg-brand-lightBg', 'text-slate-900');
+      }
+    }
+
+    function setTheme(theme) {
+      appData.theme = theme;
+      persistData();
+      applyThemeStyles(theme);
+      
+      const splash = document.getElementById('splashScreen');
+      if (splash) {
+        splash.style.opacity = '0';
+        setTimeout(() => splash.remove(), 500);
+      }
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('text-brand-green');
+        btn.classList.add('text-zinc-500');
+        if(btn.getAttribute('data-tab') === tabId) {
+          btn.classList.remove('text-zinc-500');
+          btn.classList.add('text-brand-green');
+        }
+      });
+
+      if(tabId === 'progress') {
+        renderProgressChart();
+      }
+    }
+
+    function toggleOtherInput(cb) {
+      const container = document.getElementById('otherInputContainer');
+      if (cb.checked) {
+        container.classList.remove('hidden');
+      } else {
+        container.classList.add('hidden');
+      }
+    }
+
+    function displayBmiUI() {
+      let markerPos = 50;
+      if (appData.bmi < 18.5) {
+        markerPos = Math.max(5, (appData.bmi / 18.5) * 25);
+      } else if (appData.bmi <= 24.9) {
+        markerPos = 25 + ((appData.bmi - 18.5) / 6.4) * 25;
+      } else if (appData.bmi <= 29.9) {
+        markerPos = 50 + ((appData.bmi - 25) / 4.9) * 25;
+      } else {
+        markerPos = Math.min(95, 75 + ((appData.bmi - 30) / 10) * 25);
+      }
+
+      document.getElementById('bmiResultCard').classList.remove('hidden');
+      document.getElementById('bmiScoreText').innerText = appData.bmi;
+      document.getElementById('bmiBadge').innerText = appData.bmiCategory;
+      document.getElementById('bmiMarker').style.left = markerPos + '%';
+      document.getElementById('bmiRecommendationNote').innerHTML = `Based on your BMI of <strong>${appData.bmi} (${appData.bmiCategory})</strong>, your recommended fitness tracker is <strong>${appData.recommendedTracker.toUpperCase()} WEIGHT</strong>.`;
+
+      document.getElementById('homeBmiVal').innerText = `${appData.bmi} (${appData.bmiCategory})`;
+      document.getElementById('homeBmiCategory').innerText = `Recommended: ${appData.recommendedTracker.toUpperCase()}`;
+    }
+
+    function saveProfile(e) {
+      e.preventDefault();
+      appData.name = document.getElementById('pName').value;
+      appData.age = parseFloat(document.getElementById('pAge').value);
+      appData.gender = document.getElementById('pGender').value;
+      appData.height = parseFloat(document.getElementById('pHeight').value);
+      appData.weight = parseFloat(document.getElementById('pWeight').value);
+
+      const heightM = appData.height / 100;
+      appData.bmi = parseFloat((appData.weight / (heightM * heightM)).toFixed(1));
+
+      if (appData.bmi < 18.5) {
+        appData.bmiCategory = 'Underweight';
+        appData.recommendedTracker = 'gain';
+      } else if (appData.bmi >= 18.5 && appData.bmi <= 24.9) {
+        appData.bmiCategory = 'Normal';
+        appData.recommendedTracker = 'maintain';
+      } else if (appData.bmi >= 25 && appData.bmi <= 29.9) {
+        appData.bmiCategory = 'Overweight';
+        appData.recommendedTracker = 'lose';
+      } else {
+        appData.bmiCategory = 'Obese';
+        appData.recommendedTracker = 'lose';
+      }
+
+      if (appData.weightRecords.length === 0) {
+        appData.weightRecords = [{ label: 'Starting', weight: appData.weight }];
+      }
+
+      persistData();
+      displayBmiUI();
+      updateTrackerUI();
+      alert('Profile saved and BMI calculated successfully!');
+    }
+
+    function displayConditionUI() {
+      const alertBox = document.getElementById('conditionResultAlert');
+      alertBox.classList.remove('hidden');
+      const banner = document.getElementById('homeAlertBanner');
+
+      if (appData.hasConditions) {
+        alertBox.className = "p-4 rounded-xl text-xs space-y-2 bg-amber-500/10 border border-amber-500/30 text-amber-300";
+        alertBox.innerHTML = `⚠️ <strong>Medical Consultation Recommended:</strong> Because you selected existing health conditions, you are advised to consult a doctor first to determine whether you are fit to follow the app's fitness recommendations.`;
+        banner.className = "p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between cursor-pointer";
+        banner.innerHTML = `<div class="flex items-center gap-3"><span class="text-xl">⚠️</span><div><h4 class="text-sm font-bold text-amber-400">Consult Doctor Required</h4><p class="text-xs text-zinc-400">Existing health conditions noted.</p></div></div><span class="text-amber-400 text-sm font-bold">→</span>`;
+      } else {
+        alertBox.className = "p-4 rounded-xl text-xs space-y-2 bg-brand-green/10 border border-brand-green/30 text-brand-green";
+        alertBox.innerHTML = `✅ <strong>Cleared to Proceed:</strong> You reported no existing health conditions. You can now access your recommended fitness tracker!`;
+        banner.className = "p-4 rounded-2xl bg-brand-green/10 border border-brand-green/30 flex items-center justify-between cursor-pointer";
+        banner.innerHTML = `<div class="flex items-center gap-3"><span class="text-xl">✅</span><div><h4 class="text-sm font-bold text-brand-green">Health Check Passed</h4><p class="text-xs text-zinc-400">Tracker unlocked and ready.</p></div></div><span class="text-brand-green text-sm font-bold">→</span>`;
+        document.getElementById('statusDot').className = "w-2 h-2 rounded-full bg-brand-green";
+        document.getElementById('statusText').innerText = "Ready";
+      }
+    }
+
+    function submitConditionCheck() {
+      const checkboxes = document.querySelectorAll('.condition-cb:checked');
+      const otherChecked = document.getElementById('otherConditionCb').checked;
+      const otherText = document.getElementById('otherConditionText').value.trim();
+
+      appData.selectedConditions = Array.from(checkboxes).map(cb => cb.value);
+      appData.otherConditionText = otherChecked ? otherText : '';
+
+      let hasCond = appData.selectedConditions.length > 0 || (otherChecked && otherText !== '');
+      appData.conditionChecked = true;
+      appData.hasConditions = hasCond;
+      appData.medicalCleared = !hasCond;
+
+      persistData();
+      displayConditionUI();
+    }
+
+    function updateTrackerUI() {
+      const types = ['lose', 'maintain', 'gain'];
+      types.forEach(t => {
+        const card = document.getElementById('card-' + t);
+        const badge = document.getElementById('badge-' + t);
+        if (t === appData.recommendedTracker) {
+          card.classList.remove('opacity-50');
+          card.classList.add('border-brand-green', 'card-active');
+          badge.innerText = 'Unlocked (Recommended)';
+          badge.className = 'text-[10px] text-brand-green font-bold';
+        } else {
+          card.classList.add('opacity-50');
+          card.classList.remove('border-brand-green', 'card-active');
+          badge.innerText = 'Locked';
+          badge.className = 'text-[10px] text-zinc-500';
+        }
+      });
+    }
+
+    function submitTrackerGoal(e) {
+      e.preventDefault();
+      const startW = parseFloat(document.getElementById('trackStartWeight').value);
+      const goalW = parseFloat(document.getElementById('trackGoalWeight').value);
+      const errBox = document.getElementById('trackerErrorMsg');
+
+      if (!appData.bmi) {
+        errBox.innerText = "Please complete your User Profile and BMI calculation first.";
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      if (startW !== appData.weight) {
+        errBox.innerText = `Starting weight (${startW} kg) does not match your profile weight (${appData.weight} kg). Please enter matching information.`;
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      let validGoal = true;
+      let reason = "";
+
+      if (appData.recommendedTracker === 'lose' && goalW >= startW) {
+        validGoal = false;
+        reason = "For 'Lose Weight', your goal weight must be less than your starting weight.";
+      } else if (appData.recommendedTracker === 'gain' && goalW <= startW) {
+        validGoal = false;
+        reason = "For 'Gain Weight', your goal weight must be greater than your starting weight.";
+      } else if (appData.recommendedTracker === 'maintain' && goalW !== startW) {
+        validGoal = false;
+        reason = "For 'Maintain Weight', your goal weight should be equal or very close to your starting weight.";
+      }
+
+      if (!validGoal) {
+        errBox.innerText = `Validation Error: ${reason}`;
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      errBox.classList.add('hidden');
+      appData.trackerActive = true;
+      appData.selectedTrackerType = appData.recommendedTracker;
+      appData.startWeight = startW;
+      appData.goalWeight = goalW;
+
+      if (appData.weightRecords.length === 0) {
+        appData.weightRecords = [{ label: 'Starting', weight: startW }];
+      } else {
+        appData.weightRecords[0].weight = startW;
+      }
+
+      persistData();
+
+      document.getElementById('homeTrackerVal').innerText = `${appData.selectedTrackerType.toUpperCase()} WEIGHT`;
+      document.getElementById('homeTrackerSub').innerText = `Target: ${goalW} kg`;
+
+      renderTrackerGuide();
+      renderProgressData();
+      alert('Tracker activated and saved!');
+    }
+
+    function renderTrackerGuide() {
+      document.getElementById('trackerGuideContent').classList.remove('hidden');
+      const type = appData.selectedTrackerType;
+      
+      const titleEl = document.getElementById('guideTitle');
+      const subEl = document.getElementById('guideSubtitle');
+      const exDietEl = document.getElementById('guideExerciseDiet');
+      const foodEl = document.getElementById('guideFoodSuggestions');
+
+      if (type === 'lose') {
+        titleEl.innerText = "Lose Weight Guide";
+        subEl.innerText = "Focus on a sustainable caloric deficit, cardiovascular conditioning, and clean whole foods.";
+        exDietEl.innerText = "• Exercise: Combine 150-300 minutes of moderate cardio (brisk walking, cycling, swimming) per week with 2-3 sessions of full-body resistance training.\n• Diet: Maintain a moderate caloric deficit with high fiber, lean proteins, and complex carbohydrates.";
+        foodEl.innerText = "Recommended Foods: Leafy greens, skinless chicken breast, fish, oats, lentils, berries, Greek yogurt.\nAvoid: Sugary beverages, refined pastries, fried fast foods, and excess saturated fats.";
+      } else if (type === 'gain') {
+        titleEl.innerText = "Gain Weight Guide";
+        subEl.innerText = "Focus on a caloric surplus, progressive resistance training, and nutrient-dense protein intake.";
+        exDietEl.innerText = "• Exercise: Focus on heavy compound weightlifting (squats, deadlifts, bench presses) 3-4 times a week with adequate rest days for muscle hypertrophy.\n• Diet: Consume a caloric surplus with frequent protein-rich meals and healthy fats.";
+        foodEl.innerText = "Recommended Foods: Whole milk, eggs, lean beef, salmon, brown rice, sweet potatoes, nuts, peanut butter, avocados.\nAvoid: Empty-calorie junk food with low nutritional value.";
+      } else {
+        titleEl.innerText = "Maintain Weight Guide";
+        subEl.innerText = "Focus on energy balance, consistent daily movement, and balanced macronutrients.";
+        exDietEl.innerText = "• Exercise: Engage in a balanced mix of aerobic exercise (150 mins/week) and muscular conditioning 2 times per week.\n• Diet: Match your daily caloric intake with your total daily energy expenditure (TDEE).";
+        foodEl.innerText = "Recommended Foods: Balanced mix of whole grains, vegetables, quality lean proteins, and healthy unsaturated fats.";
+      }
+    }
+
+    function addWeightRecord(e) {
+      e.preventDefault();
+      const label = document.getElementById('logWeekLabel').value.trim();
+      const weight = parseFloat(document.getElementById('logWeightVal').value);
+
+      appData.weightRecords.push({ label, weight });
+      persistData();
+      
+      document.getElementById('weightLogForm').reset();
+      renderProgressData();
+      alert('Weight record saved and progress updated!');
+    }
+
+    function renderProgressData() {
+      if (!appData.startWeight) return;
+
+      const currentW = appData.weightRecords[appData.weightRecords.length - 1].weight;
+      const prevW = appData.weightRecords.length > 1 ? appData.weightRecords[appData.weightRecords.length - 2].weight : appData.startWeight;
+      const diff = parseFloat((currentW - prevW).toFixed(1));
+      const remaining = parseFloat((Math.abs(appData.goalWeight - currentW)).toFixed(1));
+
+      document.getElementById('progStartVal').innerText = appData.startWeight + ' kg';
+      document.getElementById('progCurrentVal').innerText = currentW + ' kg';
+      document.getElementById('progTargetVal').innerText = appData.goalWeight + ' kg';
+      document.getElementById('progRemainingVal').innerText = remaining + ' kg';
+
+      const diffBadge = document.getElementById('progDiffBadge');
+      if (diff === 0) {
+        diffBadge.innerText = `No change`;
+      } else if (diff > 0) {
+        diffBadge.innerText = `+${diff} kg from prev`;
+        diffBadge.className = "px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-bold rounded-full";
+      } else {
+        diffBadge.innerText = `${diff} kg from prev`;
+        diffBadge.className = "px-3 py-1 bg-brand-green/20 text-brand-green text-xs font-bold rounded-full";
+      }
+
+      renderProgressChart();
+    }
+
+    function renderProgressChart() {
+      const ctx = document.getElementById('progressChart').getContext('2d');
+      const labels = appData.weightRecords.map(r => r.label);
+      const dataVals = appData.weightRecords.map(r => r.weight);
+
+      if (progressChartInstance) {
+        progressChartInstance.destroy();
+      }
+
+      progressChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Weight (kg)',
+            data: dataVals,
+            backgroundColor: '#80E51A',
+            borderRadius: 8,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: '#a1a1aa', font: { size: 10 } }
+            },
+            y: {
+              grid: { color: 'rgba(255,255,255,0.05)' },
+              ticks: { color: '#a1a1aa', font: { size: 10 } }
+            }
+          }
+        }
+      });
+    }
+
+    function resetAllData() {
+      if (confirm('Are you sure you want to clear all your saved profile, BMI, and weight records?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
+    }
+
+    // Initialize saved data immediately when page opens
+    window.addEventListener('DOMContentLoaded', loadSavedData);
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIT GO Mobile App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { green: '#80E51A', darkGreen: '#1F7A50', darkBg: '#0D0E0D', darkCard: '#151715', lightBg: '#F2F1EC', lightCard: '#FFFFFF' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .card-active { border-color: #80E51A !important; background-color: rgba(128, 229, 26, 0.05); }
+  </style>
+</head>
+<body class="bg-brand-darkBg text-white min-h-screen flex justify-center items-center p-0 sm:p-4">
+
+  <!-- Mobile Frame Container -->
+  <div id="appContainer" class="w-full max-w-md h-[100vh] sm:h-[844px] bg-brand-darkBg text-white sm:rounded-[40px] shadow-2xl flex flex-col overflow-hidden relative border border-zinc-800 transition-colors duration-300">
+    
+    <!-- SPLASH SCREEN -->
+    <div id="splashScreen" class="absolute inset-0 z-50 bg-[#141514] flex flex-col justify-between p-8 transition-opacity duration-500">
+      <div class="flex-1 flex flex-col items-center justify-center text-center">
+        <div class="w-24 h-24 mb-6">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M 25 65 L 45 45 L 60 55 L 80 35" fill="none" stroke="#80E51A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+            <polygon points="75,25 90,35 75,45" fill="#80E51A"/>
+            <path d="M 35 75 L 50 60 L 65 70" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="65" cy="25" r="8" fill="#80E51A"/>
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold tracking-tight text-white mb-2">FitGo</h1>
+        <p class="text-zinc-400 text-sm">Your health & fitness direction</p>
+      </div>
+
+      <div class="space-y-3 w-full">
+        <button onclick="setTheme('dark')" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-full hover:opacity-90 transition">
+          Use Dark Mode
+        </button>
+        <button onclick="setTheme('light')" class="w-full py-3.5 bg-zinc-800 text-white font-semibold rounded-full border border-zinc-700 hover:bg-zinc-700 transition">
+          Switch to Light Mode
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN APP WRAPPER -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      
+      <!-- Top Header (No Profile Picture / No Personalized Greetings) -->
+      <header class="px-5 pt-5 pb-3 flex items-center justify-between border-b border-zinc-800/50 bg-inherit">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-green" viewBox="0 0 100 100">
+            <path d="M 25 65 L 45 45 L 60 55 L 80 35" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round"/>
+            <circle cx="65" cy="25" r="10" fill="currentColor"/>
+          </svg>
+          <span class="font-black tracking-wider text-lg">FIT <span class="text-brand-green">GO</span></span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <div id="statusBadge" class="flex items-center gap-1.5 px-3 py-1 bg-zinc-800/50 rounded-full border border-zinc-700 text-xs text-zinc-300">
+            <span id="statusDot" class="w-2 h-2 rounded-full bg-orange-500"></span>
+            <span id="statusText">Action required</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Main View Area -->
+      <main class="flex-1 overflow-y-auto hide-scrollbar pb-20">
+        
+        <!-- 1. HOME TAB -->
+        <section id="tab-home" class="tab-content">
+          <div class="px-6 pt-6 pb-8 bg-zinc-900/50 border-b border-zinc-800">
+            <p class="text-xs uppercase tracking-wider text-brand-green font-semibold mb-1">WELCOME</p>
+            <h2 class="text-2xl font-bold leading-tight mb-2">Your healthier direction starts here.</h2>
+            <p class="text-xs text-zinc-400">A guided fitness plan that adapts to your body, goal, and safety check—without quick fixes.</p>
+          </div>
+
+          <div class="p-5 space-y-4">
+            <div id="homeAlertBanner" onclick="switchTab('check')" class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between cursor-pointer">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">⚠️</span>
+                <div>
+                  <h4 class="text-sm font-bold text-amber-400">Condition Check Needed</h4>
+                  <p class="text-xs text-zinc-400">Complete health verification to unlock tracker.</p>
+                </div>
+              </div>
+              <span class="text-amber-400 text-sm font-bold">→</span>
+            </div>
+
+            <!-- Quick Overview Cards -->
+            <div class="grid grid-cols-2 gap-3">
+              <div onclick="switchTab('profile')" class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-brand-green/50 transition">
+                <span class="text-xs text-zinc-400 block mb-1">BMI Status</span>
+                <h3 id="homeBmiVal" class="text-lg font-bold text-brand-green">Not Calculated</h3>
+                <p id="homeBmiCategory" class="text-xs text-zinc-500 mt-1">Update profile</p>
+              </div>
+              <div onclick="switchTab('tracker')" class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-brand-green/50 transition">
+                <span class="text-xs text-zinc-400 block mb-1">Active Tracker</span>
+                <h3 id="homeTrackerVal" class="text-lg font-bold text-zinc-300">Locked</h3>
+                <p id="homeTrackerSub" class="text-xs text-zinc-500 mt-1">Complete steps</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800">
+              <h4 class="text-sm font-bold mb-2 text-brand-green">App Features</h4>
+              <ul class="text-xs text-zinc-400 space-y-2">
+                <li>• <strong>BMI Calculator:</strong> Accurate classification diagram (Underweight to Obese).</li>
+                <li>• <strong>Condition Checker:</strong> Health & medical clearance assessment.</li>
+                <li>• <strong>Matched Trackers:</strong> Tailored diet, hydration, and exercise guides.</li>
+                <li>• <strong>Progress Tracking:</strong> Weekly weight logger & live Chart.js graphs.</li>
+              </ul>
+            </div>
+
+            <!-- Reset Data Option -->
+            <div class="pt-2 text-center">
+              <button onclick="resetAllData()" class="text-[11px] text-zinc-500 hover:text-red-400 underline transition">
+                Reset All Saved App Data
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. PROFILE & BMI TAB -->
+        <section id="tab-profile" class="tab-content hidden p-5 space-y-6">
+          <div>
+            <h2 class="text-xl font-bold mb-1">User Profile & BMI</h2>
+            <p class="text-xs text-zinc-400">Enter your personal information to calculate your BMI and assign your tracker.</p>
+          </div>
+
+          <form id="profileForm" onsubmit="saveProfile(event)" class="space-y-4">
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-zinc-300">Full Name</label>
+              <input type="text" id="pName" required placeholder="e.g., Alex Smith" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Age</label>
+                <input type="number" id="pAge" required min="10" max="120" placeholder="Years" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Gender (Optional)</label>
+                <select id="pGender" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-zinc-300">
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Height (cm)</label>
+                <input type="number" step="0.1" id="pHeight" required min="50" max="250" placeholder="e.g. 175" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Weight (kg)</label>
+                <input type="number" step="0.1" id="pWeight" required min="20" max="300" placeholder="e.g. 70" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-xl hover:opacity-90 transition shadow-lg shadow-brand-green/20">
+              Calculate BMI & Save Profile
+            </button>
+          </form>
+
+          <!-- BMI Range Diagram & Results Display -->
+          <div id="bmiResultCard" class="hidden p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4">
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-xs text-zinc-400">Your Calculated BMI</span>
+                <h3 id="bmiScoreText" class="text-2xl font-black text-brand-green">0.0</h3>
+              </div>
+              <div id="bmiBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-brand-green/20 text-brand-green">
+                Normal
+              </div>
+            </div>
+
+            <!-- BMI Classification Scale Diagram -->
+            <div class="space-y-2">
+              <div class="text-xs text-zinc-400 flex justify-between">
+                <span>Underweight (&lt;18.5)</span>
+                <span>Normal (18.5-24.9)</span>
+                <span>Overweight (25-29.9)</span>
+                <span>Obese (&ge;30)</span>
+              </div>
+              <div class="h-3 w-full rounded-full bg-gradient-to-r from-blue-400 via-brand-green via-yellow-400 to-red-500 relative">
+                <div id="bmiMarker" class="absolute top-0 bottom-0 w-1.5 bg-white shadow-md transform -translate-x-1/2 transition-all duration-500" style="left: 50%;"></div>
+              </div>
+            </div>
+
+            <p id="bmiRecommendationNote" class="text-xs text-zinc-300 bg-black/30 p-3 rounded-xl border border-zinc-800"></p>
+          </div>
+        </section>
+
+        <!-- 3. CONDITION CHECKER TAB -->
+        <section id="tab-check" class="tab-content hidden p-5 space-y-5">
+          <div>
+            <h2 class="text-xl font-bold mb-1">Health Condition Checker</h2>
+            <p class="text-xs text-zinc-400">Select any existing health conditions that apply to you for safe guidance.</p>
+          </div>
+
+          <div class="space-y-3" id="conditionChecklist">
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Hypertension" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">High Blood Pressure / Hypertension</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Diabetes" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Diabetes (Type 1 or Type 2)</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Heart Condition" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Heart Disease or Cardiovascular Issues</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Joint / Bone Injuries" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Severe Joint, Knee, or Back Pain / Injury</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Asthma / Respiratory" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Asthma or Chronic Respiratory Conditions</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" id="otherConditionCb" onchange="toggleOtherInput(this)" value="Others" class="w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Others (Specify below)</span>
+            </label>
+          </div>
+
+          <div id="otherInputContainer" class="hidden space-y-1">
+            <label class="text-xs font-semibold text-zinc-300">Specify Other Condition</label>
+            <input type="text" id="otherConditionText" placeholder="e.g., Thyroid condition, Pregnancy" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+          </div>
+
+          <button onclick="submitConditionCheck()" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-xl hover:opacity-90 transition">
+            Submit Health Assessment
+          </button>
+
+          <div id="conditionResultAlert" class="hidden p-4 rounded-xl text-xs space-y-2 border"></div>
+        </section>
+
+        <!-- 4 & 5. FITNESS TRACKER & GUIDES TAB -->
+        <section id="tab-tracker" class="tab-content hidden p-5 space-y-5">
+          <div>
+            <h2 class="text-xl font-bold mb-1">Fitness Tracker</h2>
+            <p class="text-xs text-zinc-400">Your appropriate tracker is unlocked based on your BMI calculation.</p>
+          </div>
+
+          <!-- Locked / Unlocked Tracker Categories Container -->
+          <div class="grid grid-cols-3 gap-2">
+            <div id="card-lose" class="p-3 rounded-xl border text-center opacity-50 bg-zinc-900/30">
+              <span class="text-xs block font-bold text-zinc-300">Lose Weight</span>
+              <span id="badge-lose" class="text-[10px] text-zinc-500">Locked</span>
+            </div>
+            <div id="card-maintain" class="p-3 rounded-xl border text-center opacity-50 bg-zinc-900/30">
+              <span class="text-xs block font-bold text-zinc-300">Maintain</span>
+              <span id="badge-maintain" class="text-[10px] text-zinc-500">Locked</span>
+            </div>
+            <div id="card-gain" class="p-3 rounded-xl border text-center opacity-50 bg-zinc-900/30">
+              <span class="text-xs block font-bold text-zinc-300">Gain Weight</span>
+              <span id="badge-gain" class="text-[10px] text-zinc-500">Locked</span>
+            </div>
+          </div>
+
+          <!-- Weight Goal Setup Form with Strict Validation -->
+          <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4">
+            <h3 class="text-sm font-bold text-brand-green">Goal Weight Verification</h3>
+            <p class="text-xs text-zinc-400">Starting weight must match your profile weight, and goal weight must match your tracker's direction.</p>
+            
+            <form id="trackerGoalForm" onsubmit="submitTrackerGoal(event)" class="space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Starting Weight (kg)</label>
+                  <input type="number" step="0.1" id="trackStartWeight" required class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Goal Weight (kg)</label>
+                  <input type="number" step="0.1" id="trackGoalWeight" required class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+              </div>
+              <button type="submit" class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl text-xs transition border border-zinc-700">
+                Activate Tracker & Guide
+              </button>
+            </form>
+            <div id="trackerErrorMsg" class="hidden p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs"></div>
+          </div>
+
+          <!-- Active Tracker Guide Content (Dynamically Populated) -->
+          <div id="trackerGuideContent" class="hidden space-y-4">
+            <div class="p-4 rounded-2xl bg-zinc-900/60 border border-brand-green/30 space-y-3">
+              <div class="flex justify-between items-center">
+                <h3 id="guideTitle" class="text-base font-bold text-brand-green">Guide</h3>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] bg-brand-green text-black font-bold">ACTIVE</span>
+              </div>
+              <p id="guideSubtitle" class="text-xs text-zinc-300"></p>
+            </div>
+
+            <!-- Proper Exercise & Diet -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Proper Exercise & Diet</h4>
+              <p id="guideExerciseDiet" class="text-xs text-zinc-300 leading-relaxed whitespace-pre-line"></p>
+            </div>
+
+            <!-- Hydration Reminders -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Hydration Reminder</h4>
+              <p class="text-xs text-zinc-300">Drink at least 8 to 10 glasses (2.5 - 3 liters) of water daily. Hydration supports metabolism, cellular function, and muscle recovery.</p>
+            </div>
+
+            <!-- Food Suggestions & Allergy Cautions -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Food Suggestions & Allergy Cautions</h4>
+              <p id="guideFoodSuggestions" class="text-xs text-zinc-300 leading-relaxed whitespace-pre-line"></p>
+              <div class="mt-2 p-2.5 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-300 text-[11px]">
+                ⚠️ <strong>Allergy Caution:</strong> Always check ingredient labels for common allergens (nuts, dairy, soy, gluten, seafood) before modifying your meal plan.
+              </div>
+            </div>
+
+            <!-- Educational Links on Body Fat -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Educational Resources on Body Fat</h4>
+              <p class="text-xs text-zinc-400">Learn how regional body fat deposits (belly, facial, arm, and leg fats) respond to consistent nutrition and physical conditioning:</p>
+              <div class="space-y-1.5 pt-1 text-xs">
+                <a href="https://www.healthline.com/nutrition/targeted-weight-loss" target="_blank" class="block text-brand-green hover:underline">• Understanding Spot Reduction & Fat Loss Mechanics</a>
+                <a href="https://www.mayoclinic.org/healthy-lifestyle/weight-loss/in-depth/belly-fat/art-20045809" target="_blank" class="block text-brand-green hover:underline">• Visceral Belly Fat vs. Subcutaneous Fat Guide</a>
+                <a href="https://www.medicalnewstoday.com/articles/body-fat-percentage" target="_blank" class="block text-brand-green hover:underline">• Body Fat Distribution Across Arms, Legs, and Face</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. FITNESS PROGRESS TAB -->
+        <section id="tab-progress" class="tab-content hidden p-5 space-y-5">
+          <div>
+            <h2 class="text-xl font-bold mb-1">Fitness Progress</h2>
+            <p class="text-xs text-zinc-400">Track your weight journey, log weekly progress, and view remaining goals.</p>
+          </div>
+
+          <!-- Summary Metrics Cards -->
+          <div class="grid grid-cols-3 gap-2">
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-center">
+              <span class="text-[10px] text-zinc-400 block">Starting</span>
+              <h4 id="progStartVal" class="text-sm font-bold text-white">0 kg</h4>
+            </div>
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-center">
+              <span class="text-[10px] text-zinc-400 block">Current</span>
+              <h4 id="progCurrentVal" class="text-sm font-bold text-brand-green">0 kg</h4>
+            </div>
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-center">
+              <span class="text-[10px] text-zinc-400 block">Target Goal</span>
+              <h4 id="progTargetVal" class="text-sm font-bold text-blue-400">0 kg</h4>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-zinc-400 block">Remaining Weight to Target</span>
+              <h4 id="progRemainingVal" class="text-lg font-black text-white">0.0 kg</h4>
+            </div>
+            <div id="progDiffBadge" class="px-3 py-1 bg-brand-green/20 text-brand-green text-xs font-bold rounded-full">
+              Diff: 0.0 kg
+            </div>
+          </div>
+
+          <!-- Chart.js Graph Container -->
+          <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+            <h3 class="text-xs font-bold text-zinc-300 uppercase tracking-wider">Weight Progress Bar Chart</h3>
+            <div class="h-56 w-full relative">
+              <canvas id="progressChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Weekly Weight Entry Logger -->
+          <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+            <h3 class="text-sm font-bold text-brand-green">Log Weekly Weight Record</h3>
+            <form id="weightLogForm" onsubmit="addWeightRecord(event)" class="space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Check-in Label</label>
+                  <input type="text" id="logWeekLabel" required placeholder="e.g., Week 2" class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Weight (kg)</label>
+                  <input type="number" step="0.1" id="logWeightVal" required placeholder="e.g., 68.5" class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+              </div>
+              <button type="submit" class="w-full py-3 bg-brand-green text-black font-semibold rounded-xl text-xs hover:opacity-90 transition">
+                Record & Update Graph
+              </button>
+            </form>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Bottom Navigation Bar -->
+      <nav class="absolute bottom-0 left-0 right-0 h-16 bg-zinc-950 border-t border-zinc-800 flex items-center justify-around px-2 z-40">
+        <button onclick="switchTab('home')" class="nav-btn flex flex-col items-center gap-1 text-brand-green" data-tab="home">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span class="text-[10px] font-medium">Home</span>
+        </button>
+        <button onclick="switchTab('profile')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="profile">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          <span class="text-[10px] font-medium">Profile</span>
+        </button>
+        <button onclick="switchTab('check')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="check">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="text-[10px] font-medium">Check</span>
+        </button>
+        <button onclick="switchTab('tracker')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="tracker">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span class="text-[10px] font-medium">Tracker</span>
+        </button>
+        <button onclick="switchTab('progress')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="progress">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <span class="text-[10px] font-medium">Progress</span>
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- APPLICATION JAVASCRIPT LOGIC WITH LOCALSTORAGE PERSISTENCE -->
+  <script>
+    const STORAGE_KEY = 'fitgo_saved_state_v1';
+
+    let appData = {
+      theme: null,
+      name: '',
+      age: null,
+      gender: '',
+      height: null,
+      weight: null,
+      bmi: null,
+      bmiCategory: '',
+      recommendedTracker: '',
+      conditionChecked: false,
+      hasConditions: false,
+      selectedConditions: [],
+      otherConditionText: '',
+      medicalCleared: false,
+      trackerActive: false,
+      selectedTrackerType: '',
+      startWeight: null,
+      goalWeight: null,
+      weightRecords: []
+    };
+
+    let progressChartInstance = null;
+
+    // Save current state to device localStorage
+    function persistData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+      } catch (e) {
+        console.error('Failed to save data to localStorage:', e);
+      }
+    }
+
+    // Load saved state when app starts or refreshes
+    function loadSavedData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+
+        const saved = JSON.parse(raw);
+        appData = { ...appData, ...saved };
+
+        // 1. Restore Theme & Bypass Splash if already chosen
+        if (appData.theme) {
+          applyThemeStyles(appData.theme);
+          const splash = document.getElementById('splashScreen');
+          if (splash) splash.remove();
+        }
+
+        // 2. Restore Profile Inputs & BMI UI
+        if (appData.name) document.getElementById('pName').value = appData.name;
+        if (appData.age) document.getElementById('pAge').value = appData.age;
+        if (appData.gender) document.getElementById('pGender').value = appData.gender;
+        if (appData.height) document.getElementById('pHeight').value = appData.height;
+        if (appData.weight) document.getElementById('pWeight').value = appData.weight;
+
+        if (appData.bmi) {
+          displayBmiUI();
+          updateTrackerUI();
+        }
+
+        // 3. Restore Health Conditions Checkboxes & Banners
+        if (appData.selectedConditions && appData.selectedConditions.length > 0) {
+          document.querySelectorAll('.condition-cb').forEach(cb => {
+            if (appData.selectedConditions.includes(cb.value)) {
+              cb.checked = true;
+            }
+          });
+        }
+        if (appData.otherConditionText) {
+          document.getElementById('otherConditionCb').checked = true;
+          document.getElementById('otherInputContainer').classList.remove('hidden');
+          document.getElementById('otherConditionText').value = appData.otherConditionText;
+        }
+        if (appData.conditionChecked) {
+          displayConditionUI();
+        }
+
+        // 4. Restore Active Tracker, Goals & Progress Graph
+        if (appData.trackerActive && appData.startWeight && appData.goalWeight) {
+          document.getElementById('trackStartWeight').value = appData.startWeight;
+          document.getElementById('trackGoalWeight').value = appData.goalWeight;
+          document.getElementById('homeTrackerVal').innerText = `${appData.selectedTrackerType.toUpperCase()} WEIGHT`;
+          document.getElementById('homeTrackerSub').innerText = `Target: ${appData.goalWeight} kg`;
+          renderTrackerGuide();
+          renderProgressData();
+        }
+      } catch (e) {
+        console.error('Failed to load saved data:', e);
+      }
+    }
+
+    function applyThemeStyles(theme) {
+      const container = document.getElementById('appContainer');
+      if (theme === 'light') {
+        container.classList.remove('dark', 'bg-brand-darkBg', 'text-white');
+        container.classList.add('bg-brand-lightBg', 'text-slate-900');
+      } else {
+        container.classList.add('dark', 'bg-brand-darkBg', 'text-white');
+        container.classList.remove('bg-brand-lightBg', 'text-slate-900');
+      }
+    }
+
+    function setTheme(theme) {
+      appData.theme = theme;
+      persistData();
+      applyThemeStyles(theme);
+      
+      const splash = document.getElementById('splashScreen');
+      if (splash) {
+        splash.style.opacity = '0';
+        setTimeout(() => splash.remove(), 500);
+      }
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('text-brand-green');
+        btn.classList.add('text-zinc-500');
+        if(btn.getAttribute('data-tab') === tabId) {
+          btn.classList.remove('text-zinc-500');
+          btn.classList.add('text-brand-green');
+        }
+      });
+
+      if(tabId === 'progress') {
+        renderProgressChart();
+      }
+    }
+
+    function toggleOtherInput(cb) {
+      const container = document.getElementById('otherInputContainer');
+      if (cb.checked) {
+        container.classList.remove('hidden');
+      } else {
+        container.classList.add('hidden');
+      }
+    }
+
+    function displayBmiUI() {
+      let markerPos = 50;
+      if (appData.bmi < 18.5) {
+        markerPos = Math.max(5, (appData.bmi / 18.5) * 25);
+      } else if (appData.bmi <= 24.9) {
+        markerPos = 25 + ((appData.bmi - 18.5) / 6.4) * 25;
+      } else if (appData.bmi <= 29.9) {
+        markerPos = 50 + ((appData.bmi - 25) / 4.9) * 25;
+      } else {
+        markerPos = Math.min(95, 75 + ((appData.bmi - 30) / 10) * 25);
+      }
+
+      document.getElementById('bmiResultCard').classList.remove('hidden');
+      document.getElementById('bmiScoreText').innerText = appData.bmi;
+      document.getElementById('bmiBadge').innerText = appData.bmiCategory;
+      document.getElementById('bmiMarker').style.left = markerPos + '%';
+      document.getElementById('bmiRecommendationNote').innerHTML = `Based on your BMI of <strong>${appData.bmi} (${appData.bmiCategory})</strong>, your recommended fitness tracker is <strong>${appData.recommendedTracker.toUpperCase()} WEIGHT</strong>.`;
+
+      document.getElementById('homeBmiVal').innerText = `${appData.bmi} (${appData.bmiCategory})`;
+      document.getElementById('homeBmiCategory').innerText = `Recommended: ${appData.recommendedTracker.toUpperCase()}`;
+    }
+
+    function saveProfile(e) {
+      e.preventDefault();
+      appData.name = document.getElementById('pName').value;
+      appData.age = parseFloat(document.getElementById('pAge').value);
+      appData.gender = document.getElementById('pGender').value;
+      appData.height = parseFloat(document.getElementById('pHeight').value);
+      appData.weight = parseFloat(document.getElementById('pWeight').value);
+
+      const heightM = appData.height / 100;
+      appData.bmi = parseFloat((appData.weight / (heightM * heightM)).toFixed(1));
+
+      if (appData.bmi < 18.5) {
+        appData.bmiCategory = 'Underweight';
+        appData.recommendedTracker = 'gain';
+      } else if (appData.bmi >= 18.5 && appData.bmi <= 24.9) {
+        appData.bmiCategory = 'Normal';
+        appData.recommendedTracker = 'maintain';
+      } else if (appData.bmi >= 25 && appData.bmi <= 29.9) {
+        appData.bmiCategory = 'Overweight';
+        appData.recommendedTracker = 'lose';
+      } else {
+        appData.bmiCategory = 'Obese';
+        appData.recommendedTracker = 'lose';
+      }
+
+      if (appData.weightRecords.length === 0) {
+        appData.weightRecords = [{ label: 'Starting', weight: appData.weight }];
+      }
+
+      persistData();
+      displayBmiUI();
+      updateTrackerUI();
+      alert('Profile saved and BMI calculated successfully!');
+    }
+
+    function displayConditionUI() {
+      const alertBox = document.getElementById('conditionResultAlert');
+      alertBox.classList.remove('hidden');
+      const banner = document.getElementById('homeAlertBanner');
+
+      if (appData.hasConditions) {
+        alertBox.className = "p-4 rounded-xl text-xs space-y-2 bg-amber-500/10 border border-amber-500/30 text-amber-300";
+        alertBox.innerHTML = `⚠️ <strong>Medical Consultation Recommended:</strong> Because you selected existing health conditions, you are advised to consult a doctor first to determine whether you are fit to follow the app's fitness recommendations.`;
+        banner.className = "p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between cursor-pointer";
+        banner.innerHTML = `<div class="flex items-center gap-3"><span class="text-xl">⚠️</span><div><h4 class="text-sm font-bold text-amber-400">Consult Doctor Required</h4><p class="text-xs text-zinc-400">Existing health conditions noted.</p></div></div><span class="text-amber-400 text-sm font-bold">→</span>`;
+      } else {
+        alertBox.className = "p-4 rounded-xl text-xs space-y-2 bg-brand-green/10 border border-brand-green/30 text-brand-green";
+        alertBox.innerHTML = `✅ <strong>Cleared to Proceed:</strong> You reported no existing health conditions. You can now access your recommended fitness tracker!`;
+        banner.className = "p-4 rounded-2xl bg-brand-green/10 border border-brand-green/30 flex items-center justify-between cursor-pointer";
+        banner.innerHTML = `<div class="flex items-center gap-3"><span class="text-xl">✅</span><div><h4 class="text-sm font-bold text-brand-green">Health Check Passed</h4><p class="text-xs text-zinc-400">Tracker unlocked and ready.</p></div></div><span class="text-brand-green text-sm font-bold">→</span>`;
+        document.getElementById('statusDot').className = "w-2 h-2 rounded-full bg-brand-green";
+        document.getElementById('statusText').innerText = "Ready";
+      }
+    }
+
+    function submitConditionCheck() {
+      const checkboxes = document.querySelectorAll('.condition-cb:checked');
+      const otherChecked = document.getElementById('otherConditionCb').checked;
+      const otherText = document.getElementById('otherConditionText').value.trim();
+
+      appData.selectedConditions = Array.from(checkboxes).map(cb => cb.value);
+      appData.otherConditionText = otherChecked ? otherText : '';
+
+      let hasCond = appData.selectedConditions.length > 0 || (otherChecked && otherText !== '');
+      appData.conditionChecked = true;
+      appData.hasConditions = hasCond;
+      appData.medicalCleared = !hasCond;
+
+      persistData();
+      displayConditionUI();
+    }
+
+    function updateTrackerUI() {
+      const types = ['lose', 'maintain', 'gain'];
+      types.forEach(t => {
+        const card = document.getElementById('card-' + t);
+        const badge = document.getElementById('badge-' + t);
+        if (t === appData.recommendedTracker) {
+          card.classList.remove('opacity-50');
+          card.classList.add('border-brand-green', 'card-active');
+          badge.innerText = 'Unlocked (Recommended)';
+          badge.className = 'text-[10px] text-brand-green font-bold';
+        } else {
+          card.classList.add('opacity-50');
+          card.classList.remove('border-brand-green', 'card-active');
+          badge.innerText = 'Locked';
+          badge.className = 'text-[10px] text-zinc-500';
+        }
+      });
+    }
+
+    function submitTrackerGoal(e) {
+      e.preventDefault();
+      const startW = parseFloat(document.getElementById('trackStartWeight').value);
+      const goalW = parseFloat(document.getElementById('trackGoalWeight').value);
+      const errBox = document.getElementById('trackerErrorMsg');
+
+      if (!appData.bmi) {
+        errBox.innerText = "Please complete your User Profile and BMI calculation first.";
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      if (startW !== appData.weight) {
+        errBox.innerText = `Starting weight (${startW} kg) does not match your profile weight (${appData.weight} kg). Please enter matching information.`;
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      let validGoal = true;
+      let reason = "";
+
+      if (appData.recommendedTracker === 'lose' && goalW >= startW) {
+        validGoal = false;
+        reason = "For 'Lose Weight', your goal weight must be less than your starting weight.";
+      } else if (appData.recommendedTracker === 'gain' && goalW <= startW) {
+        validGoal = false;
+        reason = "For 'Gain Weight', your goal weight must be greater than your starting weight.";
+      } else if (appData.recommendedTracker === 'maintain' && goalW !== startW) {
+        validGoal = false;
+        reason = "For 'Maintain Weight', your goal weight should be equal or very close to your starting weight.";
+      }
+
+      if (!validGoal) {
+        errBox.innerText = `Validation Error: ${reason}`;
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      errBox.classList.add('hidden');
+      appData.trackerActive = true;
+      appData.selectedTrackerType = appData.recommendedTracker;
+      appData.startWeight = startW;
+      appData.goalWeight = goalW;
+
+      if (appData.weightRecords.length === 0) {
+        appData.weightRecords = [{ label: 'Starting', weight: startW }];
+      } else {
+        appData.weightRecords[0].weight = startW;
+      }
+
+      persistData();
+
+      document.getElementById('homeTrackerVal').innerText = `${appData.selectedTrackerType.toUpperCase()} WEIGHT`;
+      document.getElementById('homeTrackerSub').innerText = `Target: ${goalW} kg`;
+
+      renderTrackerGuide();
+      renderProgressData();
+      alert('Tracker activated and saved!');
+    }
+
+    function renderTrackerGuide() {
+      document.getElementById('trackerGuideContent').classList.remove('hidden');
+      const type = appData.selectedTrackerType;
+      
+      const titleEl = document.getElementById('guideTitle');
+      const subEl = document.getElementById('guideSubtitle');
+      const exDietEl = document.getElementById('guideExerciseDiet');
+      const foodEl = document.getElementById('guideFoodSuggestions');
+
+      if (type === 'lose') {
+        titleEl.innerText = "Lose Weight Guide";
+        subEl.innerText = "Focus on a sustainable caloric deficit, cardiovascular conditioning, and clean whole foods.";
+        exDietEl.innerText = "• Exercise: Combine 150-300 minutes of moderate cardio (brisk walking, cycling, swimming) per week with 2-3 sessions of full-body resistance training.\n• Diet: Maintain a moderate caloric deficit with high fiber, lean proteins, and complex carbohydrates.";
+        foodEl.innerText = "Recommended Foods: Leafy greens, skinless chicken breast, fish, oats, lentils, berries, Greek yogurt.\nAvoid: Sugary beverages, refined pastries, fried fast foods, and excess saturated fats.";
+      } else if (type === 'gain') {
+        titleEl.innerText = "Gain Weight Guide";
+        subEl.innerText = "Focus on a caloric surplus, progressive resistance training, and nutrient-dense protein intake.";
+        exDietEl.innerText = "• Exercise: Focus on heavy compound weightlifting (squats, deadlifts, bench presses) 3-4 times a week with adequate rest days for muscle hypertrophy.\n• Diet: Consume a caloric surplus with frequent protein-rich meals and healthy fats.";
+        foodEl.innerText = "Recommended Foods: Whole milk, eggs, lean beef, salmon, brown rice, sweet potatoes, nuts, peanut butter, avocados.\nAvoid: Empty-calorie junk food with low nutritional value.";
+      } else {
+        titleEl.innerText = "Maintain Weight Guide";
+        subEl.innerText = "Focus on energy balance, consistent daily movement, and balanced macronutrients.";
+        exDietEl.innerText = "• Exercise: Engage in a balanced mix of aerobic exercise (150 mins/week) and muscular conditioning 2 times per week.\n• Diet: Match your daily caloric intake with your total daily energy expenditure (TDEE).";
+        foodEl.innerText = "Recommended Foods: Balanced mix of whole grains, vegetables, quality lean proteins, and healthy unsaturated fats.";
+      }
+    }
+
+    function addWeightRecord(e) {
+      e.preventDefault();
+      const label = document.getElementById('logWeekLabel').value.trim();
+      const weight = parseFloat(document.getElementById('logWeightVal').value);
+
+      appData.weightRecords.push({ label, weight });
+      persistData();
+      
+      document.getElementById('weightLogForm').reset();
+      renderProgressData();
+      alert('Weight record saved and progress updated!');
+    }
+
+    function renderProgressData() {
+      if (!appData.startWeight) return;
+
+      const currentW = appData.weightRecords[appData.weightRecords.length - 1].weight;
+      const prevW = appData.weightRecords.length > 1 ? appData.weightRecords[appData.weightRecords.length - 2].weight : appData.startWeight;
+      const diff = parseFloat((currentW - prevW).toFixed(1));
+      const remaining = parseFloat((Math.abs(appData.goalWeight - currentW)).toFixed(1));
+
+      document.getElementById('progStartVal').innerText = appData.startWeight + ' kg';
+      document.getElementById('progCurrentVal').innerText = currentW + ' kg';
+      document.getElementById('progTargetVal').innerText = appData.goalWeight + ' kg';
+      document.getElementById('progRemainingVal').innerText = remaining + ' kg';
+
+      const diffBadge = document.getElementById('progDiffBadge');
+      if (diff === 0) {
+        diffBadge.innerText = `No change`;
+      } else if (diff > 0) {
+        diffBadge.innerText = `+${diff} kg from prev`;
+        diffBadge.className = "px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-bold rounded-full";
+      } else {
+        diffBadge.innerText = `${diff} kg from prev`;
+        diffBadge.className = "px-3 py-1 bg-brand-green/20 text-brand-green text-xs font-bold rounded-full";
+      }
+
+      renderProgressChart();
+    }
+
+    function renderProgressChart() {
+      const ctx = document.getElementById('progressChart').getContext('2d');
+      const labels = appData.weightRecords.map(r => r.label);
+      const dataVals = appData.weightRecords.map(r => r.weight);
+
+      if (progressChartInstance) {
+        progressChartInstance.destroy();
+      }
+
+      progressChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Weight (kg)',
+            data: dataVals,
+            backgroundColor: '#80E51A',
+            borderRadius: 8,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: '#a1a1aa', font: { size: 10 } }
+            },
+            y: {
+              grid: { color: 'rgba(255,255,255,0.05)' },
+              ticks: { color: '#a1a1aa', font: { size: 10 } }
+            }
+          }
+        }
+      });
+    }
+
+    function resetAllData() {
+      if (confirm('Are you sure you want to clear all your saved profile, BMI, and weight records?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
+    }
+
+    // Initialize saved data immediately when page opens
+    window.addEventListener('DOMContentLoaded', loadSavedData);
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIT GO Mobile App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { green: '#80E51A', darkGreen: '#1F7A50', darkBg: '#0D0E0D', darkCard: '#151715', lightBg: '#F2F1EC', lightCard: '#FFFFFF' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .card-active { border-color: #80E51A !important; background-color: rgba(128, 229, 26, 0.05); }
+  </style>
+</head>
+<body class="bg-brand-darkBg text-white min-h-screen flex justify-center items-center p-0 sm:p-4">
+
+  <!-- Mobile Frame Container -->
+  <div id="appContainer" class="w-full max-w-md h-[100vh] sm:h-[844px] bg-brand-darkBg text-white sm:rounded-[40px] shadow-2xl flex flex-col overflow-hidden relative border border-zinc-800 transition-colors duration-300">
+    
+    <!-- SPLASH SCREEN -->
+    <div id="splashScreen" class="absolute inset-0 z-50 bg-[#141514] flex flex-col justify-between p-8 transition-opacity duration-500">
+      <div class="flex-1 flex flex-col items-center justify-center text-center">
+        <div class="w-24 h-24 mb-6">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M 25 65 L 45 45 L 60 55 L 80 35" fill="none" stroke="#80E51A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+            <polygon points="75,25 90,35 75,45" fill="#80E51A"/>
+            <path d="M 35 75 L 50 60 L 65 70" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="65" cy="25" r="8" fill="#80E51A"/>
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold tracking-tight text-white mb-2">FitGo</h1>
+        <p class="text-zinc-400 text-sm">Your health & fitness direction</p>
+      </div>
+
+      <div class="space-y-3 w-full">
+        <button onclick="setTheme('dark')" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-full hover:opacity-90 transition">
+          Use Dark Mode
+        </button>
+        <button onclick="setTheme('light')" class="w-full py-3.5 bg-zinc-800 text-white font-semibold rounded-full border border-zinc-700 hover:bg-zinc-700 transition">
+          Switch to Light Mode
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN APP WRAPPER -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      
+      <!-- Top Header (No Profile Picture / No Personalized Greetings) -->
+      <header class="px-5 pt-5 pb-3 flex items-center justify-between border-b border-zinc-800/50 bg-inherit">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-brand-green" viewBox="0 0 100 100">
+            <path d="M 25 65 L 45 45 L 60 55 L 80 35" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round"/>
+            <circle cx="65" cy="25" r="10" fill="currentColor"/>
+          </svg>
+          <span class="font-black tracking-wider text-lg">FIT <span class="text-brand-green">GO</span></span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <div id="statusBadge" class="flex items-center gap-1.5 px-3 py-1 bg-zinc-800/50 rounded-full border border-zinc-700 text-xs text-zinc-300">
+            <span id="statusDot" class="w-2 h-2 rounded-full bg-orange-500"></span>
+            <span id="statusText">Action required</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Main View Area -->
+      <main class="flex-1 overflow-y-auto hide-scrollbar pb-20">
+        
+        <!-- 1. HOME TAB -->
+        <section id="tab-home" class="tab-content">
+          <div class="px-6 pt-6 pb-8 bg-zinc-900/50 border-b border-zinc-800">
+            <p class="text-xs uppercase tracking-wider text-brand-green font-semibold mb-1">WELCOME</p>
+            <h2 class="text-2xl font-bold leading-tight mb-2">Your healthier direction starts here.</h2>
+            <p class="text-xs text-zinc-400">A guided fitness plan that adapts to your body, goal, and safety check—without quick fixes.</p>
+          </div>
+
+          <div class="p-5 space-y-4">
+            <div id="homeAlertBanner" onclick="switchTab('check')" class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between cursor-pointer">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">⚠️</span>
+                <div>
+                  <h4 class="text-sm font-bold text-amber-400">Condition Check Needed</h4>
+                  <p class="text-xs text-zinc-400">Complete health verification to unlock tracker.</p>
+                </div>
+              </div>
+              <span class="text-amber-400 text-sm font-bold">→</span>
+            </div>
+
+            <!-- Quick Overview Cards -->
+            <div class="grid grid-cols-2 gap-3">
+              <div onclick="switchTab('profile')" class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-brand-green/50 transition">
+                <span class="text-xs text-zinc-400 block mb-1">BMI Status</span>
+                <h3 id="homeBmiVal" class="text-lg font-bold text-brand-green">Not Calculated</h3>
+                <p id="homeBmiCategory" class="text-xs text-zinc-500 mt-1">Update profile</p>
+              </div>
+              <div onclick="switchTab('tracker')" class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-brand-green/50 transition">
+                <span class="text-xs text-zinc-400 block mb-1">Active Tracker</span>
+                <h3 id="homeTrackerVal" class="text-lg font-bold text-zinc-300">Locked</h3>
+                <p id="homeTrackerSub" class="text-xs text-zinc-500 mt-1">Complete steps</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800">
+              <h4 class="text-sm font-bold mb-2 text-brand-green">App Features</h4>
+              <ul class="text-xs text-zinc-400 space-y-2">
+                <li>• <strong>BMI Calculator:</strong> Accurate classification diagram (Underweight to Obese).</li>
+                <li>• <strong>Condition Checker:</strong> Health & medical clearance assessment.</li>
+                <li>• <strong>Matched Trackers:</strong> Tailored diet, hydration, and exercise guides.</li>
+                <li>• <strong>Progress Tracking:</strong> Weekly weight logger & live Chart.js graphs.</li>
+              </ul>
+            </div>
+
+            <!-- Reset Data Option -->
+            <div class="pt-2 text-center">
+              <button onclick="resetAllData()" class="text-[11px] text-zinc-500 hover:text-red-400 underline transition">
+                Reset All Saved App Data
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. PROFILE & BMI TAB -->
+        <section id="tab-profile" class="tab-content hidden p-5 space-y-6">
+          <div>
+            <h2 class="text-xl font-bold mb-1">User Profile & BMI</h2>
+            <p class="text-xs text-zinc-400">Enter your personal information to calculate your BMI and assign your tracker.</p>
+          </div>
+
+          <form id="profileForm" onsubmit="saveProfile(event)" class="space-y-4">
+            <div class="space-y-1">
+              <label class="text-xs font-semibold text-zinc-300">Full Name</label>
+              <input type="text" id="pName" required placeholder="e.g., Alex Smith" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Age</label>
+                <input type="number" id="pAge" required min="10" max="120" placeholder="Years" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Gender (Optional)</label>
+                <select id="pGender" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-zinc-300">
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Height (cm)</label>
+                <input type="number" step="0.1" id="pHeight" required min="50" max="250" placeholder="e.g. 175" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+              </div>
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-zinc-300">Weight (kg)</label>
+                <input type="number" step="0.1" id="pWeight" required min="20" max="300" placeholder="e.g. 70" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-xl hover:opacity-90 transition shadow-lg shadow-brand-green/20">
+              Calculate BMI & Save Profile
+            </button>
+          </form>
+
+          <!-- BMI Range Diagram & Results Display -->
+          <div id="bmiResultCard" class="hidden p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4">
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-xs text-zinc-400">Your Calculated BMI</span>
+                <h3 id="bmiScoreText" class="text-2xl font-black text-brand-green">0.0</h3>
+              </div>
+              <div id="bmiBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-brand-green/20 text-brand-green">
+                Normal
+              </div>
+            </div>
+
+            <!-- BMI Classification Scale Diagram -->
+            <div class="space-y-2">
+              <div class="text-xs text-zinc-400 flex justify-between">
+                <span>Underweight (&lt;18.5)</span>
+                <span>Normal (18.5-24.9)</span>
+                <span>Overweight (25-29.9)</span>
+                <span>Obese (&ge;30)</span>
+              </div>
+              <div class="h-3 w-full rounded-full bg-gradient-to-r from-blue-400 via-brand-green via-yellow-400 to-red-500 relative">
+                <div id="bmiMarker" class="absolute top-0 bottom-0 w-1.5 bg-white shadow-md transform -translate-x-1/2 transition-all duration-500" style="left: 50%;"></div>
+              </div>
+            </div>
+
+            <p id="bmiRecommendationNote" class="text-xs text-zinc-300 bg-black/30 p-3 rounded-xl border border-zinc-800"></p>
+          </div>
+        </section>
+
+        <!-- 3. CONDITION CHECKER TAB -->
+        <section id="tab-check" class="tab-content hidden p-5 space-y-5">
+          <div>
+            <h2 class="text-xl font-bold mb-1">Health Condition Checker</h2>
+            <p class="text-xs text-zinc-400">Select any existing health conditions that apply to you for safe guidance.</p>
+          </div>
+
+          <div class="space-y-3" id="conditionChecklist">
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Hypertension" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">High Blood Pressure / Hypertension</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Diabetes" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Diabetes (Type 1 or Type 2)</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Heart Condition" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Heart Disease or Cardiovascular Issues</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Joint / Bone Injuries" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Severe Joint, Knee, or Back Pain / Injury</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" value="Asthma / Respiratory" class="condition-cb w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Asthma or Chronic Respiratory Conditions</span>
+            </label>
+            <label class="flex items-center gap-3 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800 cursor-pointer hover:border-zinc-700">
+              <input type="checkbox" id="otherConditionCb" onchange="toggleOtherInput(this)" value="Others" class="w-4 h-4 accent-[#80E51A] rounded">
+              <span class="text-sm">Others (Specify below)</span>
+            </label>
+          </div>
+
+          <div id="otherInputContainer" class="hidden space-y-1">
+            <label class="text-xs font-semibold text-zinc-300">Specify Other Condition</label>
+            <input type="text" id="otherConditionText" placeholder="e.g., Thyroid condition, Pregnancy" class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+          </div>
+
+          <button onclick="submitConditionCheck()" class="w-full py-3.5 bg-brand-green text-black font-semibold rounded-xl hover:opacity-90 transition">
+            Submit Health Assessment
+          </button>
+
+          <div id="conditionResultAlert" class="hidden p-4 rounded-xl text-xs space-y-2 border"></div>
+        </section>
+
+        <!-- 4 & 5. FITNESS TRACKER & GUIDES TAB -->
+        <section id="tab-tracker" class="tab-content hidden p-5 space-y-5">
+          <div>
+            <h2 class="text-xl font-bold mb-1">Fitness Tracker</h2>
+            <p class="text-xs text-zinc-400">Your appropriate tracker is unlocked based on your BMI calculation.</p>
+          </div>
+
+          <!-- Locked / Unlocked Tracker Categories Container -->
+          <div class="grid grid-cols-3 gap-2">
+            <div id="card-lose" class="p-3 rounded-xl border text-center opacity-50 bg-zinc-900/30">
+              <span class="text-xs block font-bold text-zinc-300">Lose Weight</span>
+              <span id="badge-lose" class="text-[10px] text-zinc-500">Locked</span>
+            </div>
+            <div id="card-maintain" class="p-3 rounded-xl border text-center opacity-50 bg-zinc-900/30">
+              <span class="text-xs block font-bold text-zinc-300">Maintain</span>
+              <span id="badge-maintain" class="text-[10px] text-zinc-500">Locked</span>
+            </div>
+            <div id="card-gain" class="p-3 rounded-xl border text-center opacity-50 bg-zinc-900/30">
+              <span class="text-xs block font-bold text-zinc-300">Gain Weight</span>
+              <span id="badge-gain" class="text-[10px] text-zinc-500">Locked</span>
+            </div>
+          </div>
+
+          <!-- Weight Goal Setup Form with Strict Validation -->
+          <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4">
+            <h3 class="text-sm font-bold text-brand-green">Goal Weight Verification</h3>
+            <p class="text-xs text-zinc-400">Starting weight must match your profile weight, and goal weight must match your tracker's direction.</p>
+            
+            <form id="trackerGoalForm" onsubmit="submitTrackerGoal(event)" class="space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Starting Weight (kg)</label>
+                  <input type="number" step="0.1" id="trackStartWeight" required class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Goal Weight (kg)</label>
+                  <input type="number" step="0.1" id="trackGoalWeight" required class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+              </div>
+              <button type="submit" class="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl text-xs transition border border-zinc-700">
+                Activate Tracker & Guide
+              </button>
+            </form>
+            <div id="trackerErrorMsg" class="hidden p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs"></div>
+          </div>
+
+          <!-- Active Tracker Guide Content (Dynamically Populated) -->
+          <div id="trackerGuideContent" class="hidden space-y-4">
+            <div class="p-4 rounded-2xl bg-zinc-900/60 border border-brand-green/30 space-y-3">
+              <div class="flex justify-between items-center">
+                <h3 id="guideTitle" class="text-base font-bold text-brand-green">Guide</h3>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] bg-brand-green text-black font-bold">ACTIVE</span>
+              </div>
+              <p id="guideSubtitle" class="text-xs text-zinc-300"></p>
+            </div>
+
+            <!-- Proper Exercise & Diet -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Proper Exercise & Diet</h4>
+              <p id="guideExerciseDiet" class="text-xs text-zinc-300 leading-relaxed whitespace-pre-line"></p>
+            </div>
+
+            <!-- Hydration Reminders -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Hydration Reminder</h4>
+              <p class="text-xs text-zinc-300">Drink at least 8 to 10 glasses (2.5 - 3 liters) of water daily. Hydration supports metabolism, cellular function, and muscle recovery.</p>
+            </div>
+
+            <!-- Food Suggestions & Allergy Cautions -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Food Suggestions & Allergy Cautions</h4>
+              <p id="guideFoodSuggestions" class="text-xs text-zinc-300 leading-relaxed whitespace-pre-line"></p>
+              <div class="mt-2 p-2.5 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-300 text-[11px]">
+                ⚠️ <strong>Allergy Caution:</strong> Always check ingredient labels for common allergens (nuts, dairy, soy, gluten, seafood) before modifying your meal plan.
+              </div>
+            </div>
+
+            <!-- Educational Links on Body Fat -->
+            <div class="p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-2">
+              <h4 class="text-xs font-bold text-brand-green uppercase tracking-wider">Educational Resources on Body Fat</h4>
+              <p class="text-xs text-zinc-400">Learn how regional body fat deposits (belly, facial, arm, and leg fats) respond to consistent nutrition and physical conditioning:</p>
+              <div class="space-y-1.5 pt-1 text-xs">
+                <a href="https://www.healthline.com/nutrition/targeted-weight-loss" target="_blank" class="block text-brand-green hover:underline">• Understanding Spot Reduction & Fat Loss Mechanics</a>
+                <a href="https://www.mayoclinic.org/healthy-lifestyle/weight-loss/in-depth/belly-fat/art-20045809" target="_blank" class="block text-brand-green hover:underline">• Visceral Belly Fat vs. Subcutaneous Fat Guide</a>
+                <a href="https://www.medicalnewstoday.com/articles/body-fat-percentage" target="_blank" class="block text-brand-green hover:underline">• Body Fat Distribution Across Arms, Legs, and Face</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. FITNESS PROGRESS TAB -->
+        <section id="tab-progress" class="tab-content hidden p-5 space-y-5">
+          <div>
+            <h2 class="text-xl font-bold mb-1">Fitness Progress</h2>
+            <p class="text-xs text-zinc-400">Track your weight journey, log weekly progress, and view remaining goals.</p>
+          </div>
+
+          <!-- Summary Metrics Cards -->
+          <div class="grid grid-cols-3 gap-2">
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-center">
+              <span class="text-[10px] text-zinc-400 block">Starting</span>
+              <h4 id="progStartVal" class="text-sm font-bold text-white">0 kg</h4>
+            </div>
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-center">
+              <span class="text-[10px] text-zinc-400 block">Current</span>
+              <h4 id="progCurrentVal" class="text-sm font-bold text-brand-green">0 kg</h4>
+            </div>
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-center">
+              <span class="text-[10px] text-zinc-400 block">Target Goal</span>
+              <h4 id="progTargetVal" class="text-sm font-bold text-blue-400">0 kg</h4>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex justify-between items-center">
+            <div>
+              <span class="text-xs text-zinc-400 block">Remaining Weight to Target</span>
+              <h4 id="progRemainingVal" class="text-lg font-black text-white">0.0 kg</h4>
+            </div>
+            <div id="progDiffBadge" class="px-3 py-1 bg-brand-green/20 text-brand-green text-xs font-bold rounded-full">
+              Diff: 0.0 kg
+            </div>
+          </div>
+
+          <!-- Chart.js Graph Container -->
+          <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+            <h3 class="text-xs font-bold text-zinc-300 uppercase tracking-wider">Weight Progress Bar Chart</h3>
+            <div class="h-56 w-full relative">
+              <canvas id="progressChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Weekly Weight Entry Logger -->
+          <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3">
+            <h3 class="text-sm font-bold text-brand-green">Log Weekly Weight Record</h3>
+            <form id="weightLogForm" onsubmit="addWeightRecord(event)" class="space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Check-in Label</label>
+                  <input type="text" id="logWeekLabel" required placeholder="e.g., Week 2" class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+                <div class="space-y-1">
+                  <label class="text-xs text-zinc-400">Weight (kg)</label>
+                  <input type="number" step="0.1" id="logWeightVal" required placeholder="e.g., 68.5" class="w-full px-3 py-2.5 bg-black border border-zinc-800 rounded-xl text-sm focus:border-brand-green outline-none text-white">
+                </div>
+              </div>
+              <button type="submit" class="w-full py-3 bg-brand-green text-black font-semibold rounded-xl text-xs hover:opacity-90 transition">
+                Record & Update Graph
+              </button>
+            </form>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Bottom Navigation Bar -->
+      <nav class="absolute bottom-0 left-0 right-0 h-16 bg-zinc-950 border-t border-zinc-800 flex items-center justify-around px-2 z-40">
+        <button onclick="switchTab('home')" class="nav-btn flex flex-col items-center gap-1 text-brand-green" data-tab="home">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span class="text-[10px] font-medium">Home</span>
+        </button>
+        <button onclick="switchTab('profile')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="profile">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          <span class="text-[10px] font-medium">Profile</span>
+        </button>
+        <button onclick="switchTab('check')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="check">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="text-[10px] font-medium">Check</span>
+        </button>
+        <button onclick="switchTab('tracker')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="tracker">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span class="text-[10px] font-medium">Tracker</span>
+        </button>
+        <button onclick="switchTab('progress')" class="nav-btn flex flex-col items-center gap-1 text-zinc-500" data-tab="progress">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <span class="text-[10px] font-medium">Progress</span>
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- APPLICATION JAVASCRIPT LOGIC WITH LOCALSTORAGE PERSISTENCE -->
+  <script>
+    const STORAGE_KEY = 'fitgo_saved_state_v1';
+
+    let appData = {
+      theme: null,
+      name: '',
+      age: null,
+      gender: '',
+      height: null,
+      weight: null,
+      bmi: null,
+      bmiCategory: '',
+      recommendedTracker: '',
+      conditionChecked: false,
+      hasConditions: false,
+      selectedConditions: [],
+      otherConditionText: '',
+      medicalCleared: false,
+      trackerActive: false,
+      selectedTrackerType: '',
+      startWeight: null,
+      goalWeight: null,
+      weightRecords: []
+    };
+
+    let progressChartInstance = null;
+
+    // Save current state to device localStorage
+    function persistData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+      } catch (e) {
+        console.error('Failed to save data to localStorage:', e);
+      }
+    }
+
+    // Load saved state when app starts or refreshes
+    function loadSavedData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+
+        const saved = JSON.parse(raw);
+        appData = { ...appData, ...saved };
+
+        // 1. Restore Theme & Bypass Splash if already chosen
+        if (appData.theme) {
+          applyThemeStyles(appData.theme);
+          const splash = document.getElementById('splashScreen');
+          if (splash) splash.remove();
+        }
+
+        // 2. Restore Profile Inputs & BMI UI
+        if (appData.name) document.getElementById('pName').value = appData.name;
+        if (appData.age) document.getElementById('pAge').value = appData.age;
+        if (appData.gender) document.getElementById('pGender').value = appData.gender;
+        if (appData.height) document.getElementById('pHeight').value = appData.height;
+        if (appData.weight) document.getElementById('pWeight').value = appData.weight;
+
+        if (appData.bmi) {
+          displayBmiUI();
+          updateTrackerUI();
+        }
+
+        // 3. Restore Health Conditions Checkboxes & Banners
+        if (appData.selectedConditions && appData.selectedConditions.length > 0) {
+          document.querySelectorAll('.condition-cb').forEach(cb => {
+            if (appData.selectedConditions.includes(cb.value)) {
+              cb.checked = true;
+            }
+          });
+        }
+        if (appData.otherConditionText) {
+          document.getElementById('otherConditionCb').checked = true;
+          document.getElementById('otherInputContainer').classList.remove('hidden');
+          document.getElementById('otherConditionText').value = appData.otherConditionText;
+        }
+        if (appData.conditionChecked) {
+          displayConditionUI();
+        }
+
+        // 4. Restore Active Tracker, Goals & Progress Graph
+        if (appData.trackerActive && appData.startWeight && appData.goalWeight) {
+          document.getElementById('trackStartWeight').value = appData.startWeight;
+          document.getElementById('trackGoalWeight').value = appData.goalWeight;
+          document.getElementById('homeTrackerVal').innerText = `${appData.selectedTrackerType.toUpperCase()} WEIGHT`;
+          document.getElementById('homeTrackerSub').innerText = `Target: ${appData.goalWeight} kg`;
+          renderTrackerGuide();
+          renderProgressData();
+        }
+      } catch (e) {
+        console.error('Failed to load saved data:', e);
+      }
+    }
+
+    function applyThemeStyles(theme) {
+      const container = document.getElementById('appContainer');
+      if (theme === 'light') {
+        container.classList.remove('dark', 'bg-brand-darkBg', 'text-white');
+        container.classList.add('bg-brand-lightBg', 'text-slate-900');
+      } else {
+        container.classList.add('dark', 'bg-brand-darkBg', 'text-white');
+        container.classList.remove('bg-brand-lightBg', 'text-slate-900');
+      }
+    }
+
+    function setTheme(theme) {
+      appData.theme = theme;
+      persistData();
+      applyThemeStyles(theme);
+      
+      const splash = document.getElementById('splashScreen');
+      if (splash) {
+        splash.style.opacity = '0';
+        setTimeout(() => splash.remove(), 500);
+      }
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('text-brand-green');
+        btn.classList.add('text-zinc-500');
+        if(btn.getAttribute('data-tab') === tabId) {
+          btn.classList.remove('text-zinc-500');
+          btn.classList.add('text-brand-green');
+        }
+      });
+
+      if(tabId === 'progress') {
+        renderProgressChart();
+      }
+    }
+
+    function toggleOtherInput(cb) {
+      const container = document.getElementById('otherInputContainer');
+      if (cb.checked) {
+        container.classList.remove('hidden');
+      } else {
+        container.classList.add('hidden');
+      }
+    }
+
+    function displayBmiUI() {
+      let markerPos = 50;
+      if (appData.bmi < 18.5) {
+        markerPos = Math.max(5, (appData.bmi / 18.5) * 25);
+      } else if (appData.bmi <= 24.9) {
+        markerPos = 25 + ((appData.bmi - 18.5) / 6.4) * 25;
+      } else if (appData.bmi <= 29.9) {
+        markerPos = 50 + ((appData.bmi - 25) / 4.9) * 25;
+      } else {
+        markerPos = Math.min(95, 75 + ((appData.bmi - 30) / 10) * 25);
+      }
+
+      document.getElementById('bmiResultCard').classList.remove('hidden');
+      document.getElementById('bmiScoreText').innerText = appData.bmi;
+      document.getElementById('bmiBadge').innerText = appData.bmiCategory;
+      document.getElementById('bmiMarker').style.left = markerPos + '%';
+      document.getElementById('bmiRecommendationNote').innerHTML = `Based on your BMI of <strong>${appData.bmi} (${appData.bmiCategory})</strong>, your recommended fitness tracker is <strong>${appData.recommendedTracker.toUpperCase()} WEIGHT</strong>.`;
+
+      document.getElementById('homeBmiVal').innerText = `${appData.bmi} (${appData.bmiCategory})`;
+      document.getElementById('homeBmiCategory').innerText = `Recommended: ${appData.recommendedTracker.toUpperCase()}`;
+    }
+
+    function saveProfile(e) {
+      e.preventDefault();
+      appData.name = document.getElementById('pName').value;
+      appData.age = parseFloat(document.getElementById('pAge').value);
+      appData.gender = document.getElementById('pGender').value;
+      appData.height = parseFloat(document.getElementById('pHeight').value);
+      appData.weight = parseFloat(document.getElementById('pWeight').value);
+
+      const heightM = appData.height / 100;
+      appData.bmi = parseFloat((appData.weight / (heightM * heightM)).toFixed(1));
+
+      if (appData.bmi < 18.5) {
+        appData.bmiCategory = 'Underweight';
+        appData.recommendedTracker = 'gain';
+      } else if (appData.bmi >= 18.5 && appData.bmi <= 24.9) {
+        appData.bmiCategory = 'Normal';
+        appData.recommendedTracker = 'maintain';
+      } else if (appData.bmi >= 25 && appData.bmi <= 29.9) {
+        appData.bmiCategory = 'Overweight';
+        appData.recommendedTracker = 'lose';
+      } else {
+        appData.bmiCategory = 'Obese';
+        appData.recommendedTracker = 'lose';
+      }
+
+      if (appData.weightRecords.length === 0) {
+        appData.weightRecords = [{ label: 'Starting', weight: appData.weight }];
+      }
+
+      persistData();
+      displayBmiUI();
+      updateTrackerUI();
+      alert('Profile saved and BMI calculated successfully!');
+    }
+
+    function displayConditionUI() {
+      const alertBox = document.getElementById('conditionResultAlert');
+      alertBox.classList.remove('hidden');
+      const banner = document.getElementById('homeAlertBanner');
+
+      if (appData.hasConditions) {
+        alertBox.className = "p-4 rounded-xl text-xs space-y-2 bg-amber-500/10 border border-amber-500/30 text-amber-300";
+        alertBox.innerHTML = `⚠️ <strong>Medical Consultation Recommended:</strong> Because you selected existing health conditions, you are advised to consult a doctor first to determine whether you are fit to follow the app's fitness recommendations.`;
+        banner.className = "p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between cursor-pointer";
+        banner.innerHTML = `<div class="flex items-center gap-3"><span class="text-xl">⚠️</span><div><h4 class="text-sm font-bold text-amber-400">Consult Doctor Required</h4><p class="text-xs text-zinc-400">Existing health conditions noted.</p></div></div><span class="text-amber-400 text-sm font-bold">→</span>`;
+      } else {
+        alertBox.className = "p-4 rounded-xl text-xs space-y-2 bg-brand-green/10 border border-brand-green/30 text-brand-green";
+        alertBox.innerHTML = `✅ <strong>Cleared to Proceed:</strong> You reported no existing health conditions. You can now access your recommended fitness tracker!`;
+        banner.className = "p-4 rounded-2xl bg-brand-green/10 border border-brand-green/30 flex items-center justify-between cursor-pointer";
+        banner.innerHTML = `<div class="flex items-center gap-3"><span class="text-xl">✅</span><div><h4 class="text-sm font-bold text-brand-green">Health Check Passed</h4><p class="text-xs text-zinc-400">Tracker unlocked and ready.</p></div></div><span class="text-brand-green text-sm font-bold">→</span>`;
+        document.getElementById('statusDot').className = "w-2 h-2 rounded-full bg-brand-green";
+        document.getElementById('statusText').innerText = "Ready";
+      }
+    }
+
+    function submitConditionCheck() {
+      const checkboxes = document.querySelectorAll('.condition-cb:checked');
+      const otherChecked = document.getElementById('otherConditionCb').checked;
+      const otherText = document.getElementById('otherConditionText').value.trim();
+
+      appData.selectedConditions = Array.from(checkboxes).map(cb => cb.value);
+      appData.otherConditionText = otherChecked ? otherText : '';
+
+      let hasCond = appData.selectedConditions.length > 0 || (otherChecked && otherText !== '');
+      appData.conditionChecked = true;
+      appData.hasConditions = hasCond;
+      appData.medicalCleared = !hasCond;
+
+      persistData();
+      displayConditionUI();
+    }
+
+    function updateTrackerUI() {
+      const types = ['lose', 'maintain', 'gain'];
+      types.forEach(t => {
+        const card = document.getElementById('card-' + t);
+        const badge = document.getElementById('badge-' + t);
+        if (t === appData.recommendedTracker) {
+          card.classList.remove('opacity-50');
+          card.classList.add('border-brand-green', 'card-active');
+          badge.innerText = 'Unlocked (Recommended)';
+          badge.className = 'text-[10px] text-brand-green font-bold';
+        } else {
+          card.classList.add('opacity-50');
+          card.classList.remove('border-brand-green', 'card-active');
+          badge.innerText = 'Locked';
+          badge.className = 'text-[10px] text-zinc-500';
+        }
+      });
+    }
+
+    function submitTrackerGoal(e) {
+      e.preventDefault();
+      const startW = parseFloat(document.getElementById('trackStartWeight').value);
+      const goalW = parseFloat(document.getElementById('trackGoalWeight').value);
+      const errBox = document.getElementById('trackerErrorMsg');
+
+      if (!appData.bmi) {
+        errBox.innerText = "Please complete your User Profile and BMI calculation first.";
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      if (startW !== appData.weight) {
+        errBox.innerText = `Starting weight (${startW} kg) does not match your profile weight (${appData.weight} kg). Please enter matching information.`;
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      let validGoal = true;
+      let reason = "";
+
+      if (appData.recommendedTracker === 'lose' && goalW >= startW) {
+        validGoal = false;
+        reason = "For 'Lose Weight', your goal weight must be less than your starting weight.";
+      } else if (appData.recommendedTracker === 'gain' && goalW <= startW) {
+        validGoal = false;
+        reason = "For 'Gain Weight', your goal weight must be greater than your starting weight.";
+      } else if (appData.recommendedTracker === 'maintain' && goalW !== startW) {
+        validGoal = false;
+        reason = "For 'Maintain Weight', your goal weight should be equal or very close to your starting weight.";
+      }
+
+      if (!validGoal) {
+        errBox.innerText = `Validation Error: ${reason}`;
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      errBox.classList.add('hidden');
+      appData.trackerActive = true;
+      appData.selectedTrackerType = appData.recommendedTracker;
+      appData.startWeight = startW;
+      appData.goalWeight = goalW;
+
+      if (appData.weightRecords.length === 0) {
+        appData.weightRecords = [{ label: 'Starting', weight: startW }];
+      } else {
+        appData.weightRecords[0].weight = startW;
+      }
+
+      persistData();
+
+      document.getElementById('homeTrackerVal').innerText = `${appData.selectedTrackerType.toUpperCase()} WEIGHT`;
+      document.getElementById('homeTrackerSub').innerText = `Target: ${goalW} kg`;
+
+      renderTrackerGuide();
+      renderProgressData();
+      alert('Tracker activated and saved!');
+    }
+
+    function renderTrackerGuide() {
+      document.getElementById('trackerGuideContent').classList.remove('hidden');
+      const type = appData.selectedTrackerType;
+      
+      const titleEl = document.getElementById('guideTitle');
+      const subEl = document.getElementById('guideSubtitle');
+      const exDietEl = document.getElementById('guideExerciseDiet');
+      const foodEl = document.getElementById('guideFoodSuggestions');
+
+      if (type === 'lose') {
+        titleEl.innerText = "Lose Weight Guide";
+        subEl.innerText = "Focus on a sustainable caloric deficit, cardiovascular conditioning, and clean whole foods.";
+        exDietEl.innerText = "• Exercise: Combine 150-300 minutes of moderate cardio (brisk walking, cycling, swimming) per week with 2-3 sessions of full-body resistance training.\n• Diet: Maintain a moderate caloric deficit with high fiber, lean proteins, and complex carbohydrates.";
+        foodEl.innerText = "Recommended Foods: Leafy greens, skinless chicken breast, fish, oats, lentils, berries, Greek yogurt.\nAvoid: Sugary beverages, refined pastries, fried fast foods, and excess saturated fats.";
+      } else if (type === 'gain') {
+        titleEl.innerText = "Gain Weight Guide";
+        subEl.innerText = "Focus on a caloric surplus, progressive resistance training, and nutrient-dense protein intake.";
+        exDietEl.innerText = "• Exercise: Focus on heavy compound weightlifting (squats, deadlifts, bench presses) 3-4 times a week with adequate rest days for muscle hypertrophy.\n• Diet: Consume a caloric surplus with frequent protein-rich meals and healthy fats.";
+        foodEl.innerText = "Recommended Foods: Whole milk, eggs, lean beef, salmon, brown rice, sweet potatoes, nuts, peanut butter, avocados.\nAvoid: Empty-calorie junk food with low nutritional value.";
+      } else {
+        titleEl.innerText = "Maintain Weight Guide";
+        subEl.innerText = "Focus on energy balance, consistent daily movement, and balanced macronutrients.";
+        exDietEl.innerText = "• Exercise: Engage in a balanced mix of aerobic exercise (150 mins/week) and muscular conditioning 2 times per week.\n• Diet: Match your daily caloric intake with your total daily energy expenditure (TDEE).";
+        foodEl.innerText = "Recommended Foods: Balanced mix of whole grains, vegetables, quality lean proteins, and healthy unsaturated fats.";
+      }
+    }
+
+    function addWeightRecord(e) {
+      e.preventDefault();
+      const label = document.getElementById('logWeekLabel').value.trim();
+      const weight = parseFloat(document.getElementById('logWeightVal').value);
+
+      appData.weightRecords.push({ label, weight });
+      persistData();
+      
+      document.getElementById('weightLogForm').reset();
+      renderProgressData();
+      alert('Weight record saved and progress updated!');
+    }
+
+    function renderProgressData() {
+      if (!appData.startWeight) return;
+
+      const currentW = appData.weightRecords[appData.weightRecords.length - 1].weight;
+      const prevW = appData.weightRecords.length > 1 ? appData.weightRecords[appData.weightRecords.length - 2].weight : appData.startWeight;
+      const diff = parseFloat((currentW - prevW).toFixed(1));
+      const remaining = parseFloat((Math.abs(appData.goalWeight - currentW)).toFixed(1));
+
+      document.getElementById('progStartVal').innerText = appData.startWeight + ' kg';
+      document.getElementById('progCurrentVal').innerText = currentW + ' kg';
+      document.getElementById('progTargetVal').innerText = appData.goalWeight + ' kg';
+      document.getElementById('progRemainingVal').innerText = remaining + ' kg';
+
+      const diffBadge = document.getElementById('progDiffBadge');
+      if (diff === 0) {
+        diffBadge.innerText = `No change`;
+      } else if (diff > 0) {
+        diffBadge.innerText = `+${diff} kg from prev`;
+        diffBadge.className = "px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-bold rounded-full";
+      } else {
+        diffBadge.innerText = `${diff} kg from prev`;
+        diffBadge.className = "px-3 py-1 bg-brand-green/20 text-brand-green text-xs font-bold rounded-full";
+      }
+
+      renderProgressChart();
+    }
+
+    function renderProgressChart() {
+      const ctx = document.getElementById('progressChart').getContext('2d');
+      const labels = appData.weightRecords.map(r => r.label);
+      const dataVals = appData.weightRecords.map(r => r.weight);
+
+      if (progressChartInstance) {
+        progressChartInstance.destroy();
+      }
+
+      progressChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Weight (kg)',
+            data: dataVals,
+            backgroundColor: '#80E51A',
+            borderRadius: 8,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: '#a1a1aa', font: { size: 10 } }
+            },
+            y: {
+              grid: { color: 'rgba(255,255,255,0.05)' },
+              ticks: { color: '#a1a1aa', font: { size: 10 } }
+            }
+          }
+        }
+      });
+    }
+
+    function resetAllData() {
+      if (confirm('Are you sure you want to clear all your saved profile, BMI, and weight records?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
+    }
+
+    // Initialize saved data immediately when page opens
+    window.addEventListener('DOMContentLoaded', loadSavedData);
   </script>
 </body>
 </html>
